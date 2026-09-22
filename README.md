@@ -32,6 +32,8 @@ The two plugin manifests and two marketplace catalogs cannot be merged because t
 
 The MCP App source lives under `apps/better-response/mcp`. Its Vite build produces the ignored `apps/better-response/mcp/dist/app.html` immediately before Next.js builds. The MCP route serves that generated resource, and Next.js includes it in the deployment output. It is never a committed or manually synchronized plugin artifact.
 
+A second bundle beside it, `mcp/demo.html`, renders a fixed payload through the same substrate, renderer, and registered components, and the website's `/demo` route serves it into an iframe so the landing page demonstrates the real thing rather than a screenshot. It needs its own `vite.demo.config.ts` because `viteSingleFile` inlines dynamic imports, which rollup rejects for more than one input.
+
 ## Verify
 
 ```bash
