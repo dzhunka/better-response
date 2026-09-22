@@ -1,0 +1,73 @@
+:root {
+  /* Gray */
+  --_gray-0: #ffffff;
+  --_gray-25: #fcfcfc;
+  --_gray-50: #f9f9f9;
+  --_gray-75: #f3f3f3;
+  --_gray-100: #ededed;
+  --_gray-150: #dfdfdf;
+  --_gray-175: #dcdcdc;
+  --_gray-200: #cdcdcd;
+  --_gray-250: #b9b9b9;
+  --_gray-300: #afafaf;
+  --_gray-350: #9f9f9f;
+  --_gray-400: #8f8f8f;
+  --_gray-450: #767676;
+  --_gray-500: #5d5d5d;
+  --_gray-550: #4f4f4f;
+  --_gray-600: #414141;
+  --_gray-650: #393939;
+  --_gray-700: #303030;
+  --_gray-750: #282828;
+  --_gray-800: #212121;
+  --_gray-850: #1c1c1c;
+  --_gray-900: #181818;
+  --_gray-925: #161616;
+  --_gray-950: #131313;
+  --_gray-975: #101010;
+  --_gray-1000: #0d0d0d;
+
+  /* Gray 1000 alpha */
+  --_gray-1000-a0: color-mix(in srgb, var(--_gray-1000) 0%, transparent);
+  --_gray-1000-a02: color-mix(in srgb, var(--_gray-1000) 2%, transparent);
+  --_gray-1000-a04: color-mix(in srgb, var(--_gray-1000) 4%, transparent);
+  --_gray-1000-a05: color-mix(in srgb, var(--_gray-1000) 5%, transparent);
+  --_gray-1000-a06: color-mix(in srgb, var(--_gray-1000) 6%, transparent);
+  --_gray-1000-a08: color-mix(in srgb, var(--_gray-1000) 8%, transparent);
+  --_gray-1000-a10: color-mix(in srgb, var(--_gray-1000) 10%, transparent);
+  --_gray-1000-a12: color-mix(in srgb, var(--_gray-1000) 12%, transparent);
+  --_gray-1000-a15: color-mix(in srgb, var(--_gray-1000) 15%, transparent);
+  --_gray-1000-a16: color-mix(in srgb, var(--_gray-1000) 16%, transparent);
+  --_gray-1000-a20: color-mix(in srgb, var(--_gray-1000) 20%, transparent);
+  --_gray-1000-a25: color-mix(in srgb, var(--_gray-1000) 25%, transparent);
+  --_gray-1000-a30: color-mix(in srgb, var(--_gray-1000) 30%, transparent);
+  --_gray-1000-a35: color-mix(in srgb, var(--_gray-1000) 35%, transparent);
+  --_gray-1000-a40: color-mix(in srgb, var(--_gray-1000) 40%, transparent);
+  --_gray-1000-a50: color-mix(in srgb, var(--_gray-1000) 50%, transparent);
+  --_gray-1000-a60: color-mix(in srgb, var(--_gray-1000) 60%, transparent);
+  --_gray-1000-a70: color-mix(in srgb, var(--_gray-1000) 70%, transparent);
+
+  /* Gray 0 alpha */
+  --_gray-0-a0: color-mix(in srgb, var(--_gray-0) 0%, transparent);
+  --_gray-0-a02: color-mix(in srgb, var(--_gray-0) 2%, transparent);
+  --_gray-0-a04: color-mix(in srgb, var(--_gray-0) 4%, transparent);
+  --_gray-0-a05: color-mix(in srgb, var(--_gray-0) 5%, transparent);
+  --_gray-0-a06: color-mix(in srgb, var(--_gray-0) 6%, transparent);
+  --_gray-0-a08: color-mix(in srgb, var(--_gray-0) 8%, transparent);
+  --_gray-0-a10: color-mix(in srgb, var(--_gray-0) 10%, transparent);
+  --_gray-0-a12: color-mix(in srgb, var(--_gray-0) 12%, transparent);
+  --_gray-0-a15: color-mix(in srgb, var(--_gray-0) 15%, transparent);
+  --_gray-0-a16: color-mix(in srgb, var(--_gray-0) 16%, transparent);
+  --_gray-0-a20: color-mix(in srgb, var(--_gray-0) 20%, transparent);
+  --_gray-0-a25: color-mix(in srgb, var(--_gray-0) 25%, transparent);
+  --_gray-0-a30: color-mix(in srgb, var(--_gray-0) 30%, transparent);
+  --_gray-0-a35: color-mix(in srgb, var(--_gray-0) 35%, transparent);
+  --_gray-0-a40: color-mix(in srgb, var(--_gray-0) 40%, transparent);
+  --_gray-0-a50: color-mix(in srgb, var(--_gray-0) 50%, transparent);
+  --_gray-0-a60: color-mix(in srgb, var(--_gray-0) 60%, transparent);
+  --_gray-0-a70: color-mix(in srgb, var(--_gray-0) 70%, transparent);
+
+  /* Consistent contrast */
+  --_white: #ffffff;
+  --_black: #000000;
+}

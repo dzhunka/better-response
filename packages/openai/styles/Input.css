@@ -1,0 +1,174 @@
+.Input {
+  --_input-padding: var(--_input-gutter);
+
+  appearance: none;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: var(--_input-size);
+  margin: 0;
+  padding-inline: var(--_input-padding);
+  border: 0;
+  border-radius: var(--_input-radius);
+  background-color: var(--_input-background);
+  box-shadow:
+    0 0 0 var(--border-width)
+    var(--_input-border, var(--_input-border-default)) inset;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--_input-font-size);
+  font-weight: var(--font-weight-normal);
+  line-height: 1;
+  transition:
+    background-color var(--transition-duration-basic) var(--transition-ease-basic),
+    box-shadow var(--transition-duration-basic) var(--transition-ease-basic);
+}
+
+.Input[data-variant="outline"] {
+  --_input-background: transparent;
+  --_input-border-default: var(--color-border-primary-outline);
+  --_input-border-hover: var(--color-border-primary-outline-hover);
+  --_input-border-focus: var(--color-border-form-control-focus);
+}
+
+.Input[data-variant="soft"] {
+  --_input-background: var(--color-background-primary-soft-alpha);
+  --_input-border-default: transparent;
+  --_input-border-hover: transparent;
+  --_input-border-focus: var(--color-border-form-control-soft-focus);
+}
+
+.Input[data-size="3xs"] {
+  --_input-size: var(--control-size-3xs);
+  --_input-font-size: var(--control-font-size-sm);
+  --_input-radius: var(--control-radius-sm);
+  --_input-gutter: var(--control-gutter-xs);
+}
+
+.Input[data-size="2xs"] {
+  --_input-size: var(--control-size-2xs);
+  --_input-font-size: var(--control-font-size-sm);
+  --_input-radius: var(--control-radius-sm);
+  --_input-gutter: var(--control-gutter-xs);
+}
+
+.Input[data-size="xs"] {
+  --_input-size: var(--control-size-xs);
+  --_input-font-size: var(--control-font-size-md);
+  --_input-radius: var(--control-radius-sm);
+  --_input-gutter: var(--control-gutter-xs);
+}
+
+.Input[data-size="sm"] {
+  --_input-size: var(--control-size-sm);
+  --_input-font-size: var(--control-font-size-md);
+  --_input-radius: var(--control-radius-md);
+  --_input-gutter: var(--control-gutter-sm);
+}
+
+.Input[data-size="md"] {
+  --_input-size: var(--control-size-md);
+  --_input-font-size: var(--control-font-size-md);
+  --_input-radius: var(--control-radius-md);
+  --_input-gutter: var(--control-gutter-md);
+}
+
+.Input[data-size="lg"] {
+  --_input-size: var(--control-size-lg);
+  --_input-font-size: var(--control-font-size-md);
+  --_input-radius: var(--control-radius-md);
+  --_input-gutter: var(--control-gutter-md);
+}
+
+.Input[data-size="xl"] {
+  --_input-size: var(--control-size-xl);
+  --_input-font-size: var(--control-font-size-lg);
+  --_input-radius: var(--control-radius-lg);
+  --_input-gutter: var(--control-gutter-lg);
+}
+
+.Input[data-size="2xl"] {
+  --_input-size: var(--control-size-2xl);
+  --_input-font-size: var(--control-font-size-lg);
+  --_input-radius: var(--control-radius-xl);
+  --_input-gutter: var(--control-gutter-xl);
+}
+
+.Input[data-size="3xl"] {
+  --_input-size: var(--control-size-3xl);
+  --_input-font-size: var(--control-font-size-lg);
+  --_input-radius: var(--control-radius-xl);
+  --_input-gutter: var(--control-gutter-xl);
+}
+
+.Input[data-gutter-size="2xs"] {
+  --_input-gutter: var(--control-gutter-2xs);
+}
+
+.Input[data-gutter-size="xs"] {
+  --_input-gutter: var(--control-gutter-xs);
+}
+
+.Input[data-gutter-size="sm"] {
+  --_input-gutter: var(--control-gutter-sm);
+}
+
+.Input[data-gutter-size="md"] {
+  --_input-gutter: var(--control-gutter-md);
+}
+
+.Input[data-gutter-size="lg"] {
+  --_input-gutter: var(--control-gutter-lg);
+}
+
+.Input[data-gutter-size="xl"] {
+  --_input-gutter: var(--control-gutter-xl);
+}
+
+.Input[data-pill] {
+  --_input-radius: var(--radius-full);
+  --_input-padding: calc(var(--_input-gutter) * var(--control-gutter-pill-scaling));
+}
+
+.Input[data-optically-align="start"] {
+  margin-inline-start: calc(var(--_input-gutter) * -1);
+}
+
+.Input[data-optically-align="end"] {
+  margin-inline-end: calc(var(--_input-gutter) * -1);
+}
+
+.Input::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.Input:hover {
+  --_input-border: var(--_input-border-hover);
+}
+
+.Input:focus {
+  --_input-border: var(--_input-border-focus);
+
+  outline: 0;
+}
+
+.Input[aria-invalid="true"] {
+  --_input-border: var(--color-border-form-control-invalid);
+}
+
+.Input:disabled {
+  --_input-border: var(--_input-border-default);
+
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.Input[type="number"] {
+  appearance: textfield;
+}
+
+.Input[type="number"]::-webkit-inner-spin-button,
+.Input[type="number"]::-webkit-outer-spin-button {
+  margin: 0;
+  appearance: none;
+}

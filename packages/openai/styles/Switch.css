@@ -1,0 +1,77 @@
+.Switch {
+  --_switch-track-width: 2rem;
+  --_switch-track-height: 1.1875rem;
+  --_switch-thumb-offset: 0.1875rem;
+  --_switch-thumb-size: 0.8125rem;
+  --_switch-thumb-translation: 0.8125rem;
+  --_switch-track-background: var(--color-background-switch-track);
+  --_switch-thumb-background: var(--color-background-switch-thumb);
+  --_switch-thumb-shadow: 0 1px 2px rgb(0 0 0 / 20%);
+
+  appearance: none;
+  position: relative;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: var(--_switch-track-width);
+  max-width: var(--_switch-track-width);
+  height: var(--_switch-track-height);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-full);
+  background-color: var(--_switch-track-background);
+  cursor: pointer;
+  transition:
+    background-color 250ms var(--cubic-move);
+}
+
+.Switch::after {
+  position: absolute;
+  top: var(--_switch-thumb-offset);
+  left: var(--_switch-thumb-offset);
+  display: block;
+  width: var(--_switch-thumb-size);
+  height: var(--_switch-thumb-size);
+  transform: translateX(0);
+  border-radius: var(--radius-full);
+  background-color: var(--_switch-thumb-background);
+  box-shadow: var(--_switch-thumb-shadow);
+  content: "";
+  transition:
+    transform 250ms var(--cubic-move);
+}
+
+.Switch:not(:checked, :disabled):hover {
+  --_switch-track-background: var(--color-background-switch-track-hover);
+}
+
+.Switch:checked {
+  --_switch-track-background: var(--color-background-switch-track-checked);
+}
+
+.Switch:checked::after {
+  transform: translateX(var(--_switch-thumb-translation));
+}
+
+.Switch:focus {
+  outline: none;
+}
+
+.Switch:focus-visible {
+  outline: 0.125rem solid var(--color-ring);
+  outline-offset: 0.125rem;
+}
+
+.Switch:disabled {
+  --_switch-track-background: var(--color-background-switch-track-disabled);
+  --_switch-thumb-background: var(--color-background-switch-thumb-disabled);
+  --_switch-thumb-shadow: none;
+
+  cursor: not-allowed;
+}
+
+.Switch:checked:disabled {
+  --_switch-track-background: var(
+    --color-background-switch-track-checked-disabled
+  );
+}

@@ -1,0 +1,19 @@
+.Icon {
+  display: inline-block;
+  flex-shrink: 0;
+  width: var(--_icon-size);
+  height: var(--_icon-size);
+  vertical-align: middle;
+}
+
+.Icon[data-size="sm"] {
+  --_icon-size: var(--control-icon-size-sm);
+}
+
+.Icon[data-size="md"] {
+  --_icon-size: var(--control-icon-size-md);
+}
+
+.Icon[data-size="lg"] {
+  --_icon-size: var(--control-icon-size-lg);
+}

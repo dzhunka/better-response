@@ -1,0 +1,20 @@
+{
+  "name": "better-response-local",
+  "interface": {
+    "displayName": "Better Response Local"
+  },
+  "plugins": [
+    {
+      "name": "better-response",
+      "source": {
+        "source": "local",
+        "path": "./plugins/better-response/dist"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

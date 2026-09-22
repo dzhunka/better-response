@@ -1,0 +1,6 @@
+@import "./colors/index.css";
+@import "./typography.css";
+@import "./spacing.css";
+@import "./shape.css";
+@import "./elevation.css";
+@import "./motion.css";

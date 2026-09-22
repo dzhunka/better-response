@@ -1,0 +1,23 @@
+:root {
+  /* Red */
+  --_red-25: #fff0f0;
+  --_red-50: #ffd9d9;
+  --_red-75: #ffc6c5;
+  --_red-100: #ffa4a2;
+  --_red-200: #ff8583;
+  --_red-300: #ff6764;
+  --_red-400: #fa423e;
+  --_red-500: #e02e2a;
+  --_red-600: #ba2623;
+  --_red-700: #911e1b;
+  --_red-800: #6e1615;
+  --_red-900: #4d100e;
+  --_red-950: #280b0a;
+  --_red-1000: #1f0909;
+  --_red-a25: color-mix(in srgb, var(--_red-400) 8%, transparent);
+  --_red-a50: color-mix(in srgb, var(--_red-400) 16%, transparent);
+  --_red-a75: color-mix(in srgb, var(--_red-400) 30%, transparent);
+  --_red-a100: color-mix(in srgb, var(--_red-400) 48%, transparent);
+  --_red-a200: color-mix(in srgb, var(--_red-400) 64%, transparent);
+  --_red-a300: color-mix(in srgb, var(--_red-400) 79%, transparent);
+}

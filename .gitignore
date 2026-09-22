@@ -1,0 +1,19 @@
+node_modules/
+/dist/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+.logs/
+logs/*.jsonl
+logs/*.md
+.DS_Store
+.vercel
+.playwright-cli/
+/output/
+apps/better-response/mcp/dist/
+
+# Internal records kept local, never published. See AGENTS.md "Product context".
+/PRODUCT.md
+/SUBMISSION.md
+/history/
+/Napkin/

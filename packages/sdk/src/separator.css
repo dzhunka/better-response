@@ -1,0 +1,25 @@
+.Separator {
+  align-self: stretch;
+  background-color: var(--border);
+  flex-shrink: 0;
+  height: 1px;
+  width: auto;
+}
+
+.Stack[data-direction="horizontal"] > .Separator:not([data-orientation]),
+.Wrap > .Separator:not([data-orientation]) {
+  height: auto;
+  width: 1px;
+}
+
+.Separator[data-orientation="horizontal"] {
+  align-self: stretch;
+  height: 1px;
+  width: auto;
+}
+
+.Separator[data-orientation="vertical"] {
+  align-self: stretch;
+  height: auto;
+  width: 1px;
+}

@@ -1,0 +1,27 @@
+.Scroll {
+  max-width: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+.Scroll[data-height="sm"] {
+  max-height: 8rem;
+}
+
+.Scroll[data-height="md"] {
+  max-height: 16rem;
+}
+
+.Scroll[data-height="lg"] {
+  max-height: 24rem;
+}
+
+.Scroll[data-orientation="vertical"] {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.Scroll[data-orientation="horizontal"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+}

@@ -1,0 +1,50 @@
+{
+  "name": "@better-response/openai",
+  "version": "0.9.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./design/index.css",
+    "./themes/colors": "./design/colors/index.css",
+    "./themes/typography": "./design/typography.css",
+    "./themes/spacing": "./design/spacing.css",
+    "./themes/shape": "./design/shape.css",
+    "./themes/elevation": "./design/elevation.css",
+    "./themes/motion": "./design/motion.css",
+    "./polymorphic": "./polymorphic.ts",
+    "./view/Badge": "./view/Badge.tsx",
+    "./view/Button": "./view/Button.tsx",
+    "./view/Card": "./view/Card.tsx",
+    "./view/Checkbox": "./view/Checkbox.tsx",
+    "./view/ControlContainer": "./view/ControlContainer.tsx",
+    "./view/Icon": "./view/Icon.tsx",
+    "./view/Image": "./view/Image.tsx",
+    "./view/Input": "./view/Input.tsx",
+    "./view/List": "./view/List.tsx",
+    "./view/ListItem": "./view/ListItem.tsx",
+    "./view/ShimmerText": "./view/ShimmerText.tsx",
+    "./view/Slider": "./view/Slider.tsx",
+    "./view/Surface": "./view/Surface.tsx",
+    "./view/Switch": "./view/Switch.tsx",
+    "./view/Textarea": "./view/Textarea.tsx",
+    "./view/Text": "./view/Text.tsx",
+    "./view/TextLink": "./view/TextLink.tsx",
+    "./ui/Card": "./ui/Card.tsx",
+    "./ui/Select": "./ui/Select.tsx",
+    "./components/Card": "./components/Card.tsx",
+    "./components/Select": "./components/Select.tsx"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.7.0"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "react": "^19.2.8"
+  }
+}

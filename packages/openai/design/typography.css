@@ -1,0 +1,78 @@
+:root {
+  --font-sans: ui-sans-serif, -apple-system, system-ui, "Segoe UI", "Noto Sans", "Helvetica",
+    "Arial", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --font-tracking-wide: 0em;
+  --font-tracking-normal: 0em;
+  --font-tracking-tight: 0em;
+
+  --font-heading-5xl-size: 4.5rem;
+  --font-heading-5xl-line-height: 4.5rem;
+  --font-heading-5xl-weight: var(--font-weight-semibold);
+  --font-heading-5xl-tracking: var(--font-tracking-tight);
+  --font-heading-4xl-size: 3.75rem;
+  --font-heading-4xl-line-height: 3.75rem;
+  --font-heading-4xl-weight: var(--font-weight-semibold);
+  --font-heading-4xl-tracking: var(--font-tracking-tight);
+  --font-heading-3xl-size: 3rem;
+  --font-heading-3xl-line-height: 3rem;
+  --font-heading-3xl-weight: var(--font-weight-semibold);
+  --font-heading-3xl-tracking: var(--font-tracking-tight);
+  --font-heading-2xl-size: 2.25rem;
+  --font-heading-2xl-line-height: 2.625rem;
+  --font-heading-2xl-weight: var(--font-weight-semibold);
+  --font-heading-2xl-tracking: var(--font-tracking-tight);
+  --font-heading-xl-size: 2rem;
+  --font-heading-xl-line-height: 2.375rem;
+  --font-heading-xl-weight: var(--font-weight-semibold);
+  --font-heading-xl-tracking: var(--font-tracking-tight);
+  --font-heading-lg-size: 1.5rem;
+  --font-heading-lg-line-height: 1.75rem;
+  --font-heading-lg-weight: var(--font-weight-semibold);
+  --font-heading-lg-tracking: var(--font-tracking-normal);
+  --font-heading-md-size: 1.25rem;
+  --font-heading-md-line-height: 1.625rem;
+  --font-heading-md-weight: var(--font-weight-semibold);
+  --font-heading-md-tracking: var(--font-tracking-normal);
+  --font-heading-sm-size: 1.125rem;
+  --font-heading-sm-line-height: 1.625rem;
+  --font-heading-sm-weight: var(--font-weight-semibold);
+  --font-heading-sm-tracking: var(--font-tracking-normal);
+  --font-heading-xs-size: 1rem;
+  --font-heading-xs-line-height: 1.5rem;
+  --font-heading-xs-weight: var(--font-weight-semibold);
+  --font-heading-xs-tracking: var(--font-tracking-normal);
+
+  --font-text-lg-size: 1.125rem;
+  --font-text-lg-line-height: 1.8125rem;
+  --font-text-lg-weight: var(--font-weight-normal);
+  --font-text-lg-tracking: var(--font-tracking-normal);
+  --font-text-md-size: 1rem;
+  --font-text-md-line-height: 1.5rem;
+  --font-text-md-weight: var(--font-weight-normal);
+  --font-text-md-tracking: var(--font-tracking-normal);
+  --font-text-sm-size: 0.875rem;
+  --font-text-sm-line-height: 1.25rem;
+  --font-text-sm-weight: var(--font-weight-normal);
+  --font-text-sm-tracking: var(--font-tracking-normal);
+  --font-text-xs-size: 0.75rem;
+  --font-text-xs-line-height: 1.125rem;
+  --font-text-xs-weight: var(--font-weight-normal);
+  --font-text-xs-tracking: var(--font-tracking-wide);
+  --font-text-2xs-size: 0.625rem;
+  --font-text-2xs-line-height: 0.875rem;
+  --font-text-2xs-weight: var(--font-weight-normal);
+  --font-text-2xs-tracking: var(--font-tracking-wide);
+  --font-text-3xs-size: 0.5rem;
+  --font-text-3xs-line-height: 0.75rem;
+  --font-text-3xs-weight: var(--font-weight-normal);
+  --font-text-3xs-tracking: var(--font-tracking-wide);
+
+  --control-font-size-sm: var(--font-text-xs-size);
+  --control-font-size-md: var(--font-text-sm-size);
+  --control-font-size-lg: var(--font-text-md-size);
+}

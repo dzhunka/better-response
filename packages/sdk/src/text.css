@@ -1,0 +1,30 @@
+.Text {
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+.Text[data-variant="body"] {
+  color: var(--foreground);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.Text[data-variant="heading"] {
+  color: var(--foreground);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+}
+
+.Text[data-variant="label"] {
+  color: var(--foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+}
+
+.Text[data-variant="caption"] {
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  line-height: 1rem;
+}

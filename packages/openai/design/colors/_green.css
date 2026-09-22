@@ -1,0 +1,23 @@
+:root {
+  /* Green */
+  --_green-25: #edfaf2;
+  --_green-50: #d9f4e4;
+  --_green-75: #b8ebcc;
+  --_green-100: #8cdfad;
+  --_green-200: #66d492;
+  --_green-300: #40c977;
+  --_green-400: #04b84c;
+  --_green-500: #00a240;
+  --_green-600: #008635;
+  --_green-700: #00692a;
+  --_green-800: #004f1f;
+  --_green-900: #003716;
+  --_green-950: #011c0b;
+  --_green-1000: #001207;
+  --_green-a25: color-mix(in srgb, var(--_green-400) 8%, transparent);
+  --_green-a50: color-mix(in srgb, var(--_green-400) 15%, transparent);
+  --_green-a75: color-mix(in srgb, var(--_green-400) 29%, transparent);
+  --_green-a100: color-mix(in srgb, var(--_green-400) 45%, transparent);
+  --_green-a200: color-mix(in srgb, var(--_green-400) 60%, transparent);
+  --_green-a300: color-mix(in srgb, var(--_green-400) 75%, transparent);
+}

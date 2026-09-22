@@ -1,0 +1,55 @@
+.ControlContainer {
+  --_control-container-background: transparent;
+  --_control-container-border: transparent;
+  --_control-container-border-hover: transparent;
+  --_control-container-border-focus: var(--color-border-form-control-focus);
+  --_control-container-radius: var(--control-radius-md);
+
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  height: var(--control-size-md);
+  border-radius: var(--_control-container-radius);
+  background-color: var(--_control-container-background);
+  box-shadow: 0 0 0 var(--border-width) var(--_control-container-border) inset;
+  color: var(--color-text);
+  transition:
+    background-color var(--transition-duration-basic) var(--transition-ease-basic),
+    box-shadow var(--transition-duration-basic) var(--transition-ease-basic);
+}
+
+.ControlContainer[data-variant="outline"] {
+  --_control-container-border: var(--color-border-primary-outline);
+  --_control-container-border-hover: var(--color-border-primary-outline-hover);
+}
+
+.ControlContainer[data-variant="soft"] {
+  --_control-container-background: var(--color-background-primary-soft-alpha);
+  --_control-container-border-focus: var(--color-border-form-control-soft-focus);
+}
+
+.ControlContainer[data-pill] {
+  --_control-container-radius: var(--radius-full);
+}
+
+.ControlContainer[data-invalid] {
+  --_control-container-border: var(--color-border-form-control-invalid);
+  --_control-container-border-focus: var(--color-border-form-control-invalid);
+}
+
+.ControlContainer:not([data-disabled]):not([data-invalid]):hover,
+.ControlContainer:not([data-disabled]):not([data-invalid]):has(:hover) {
+  --_control-container-border: var(--_control-container-border-hover);
+}
+
+.ControlContainer:focus-visible,
+.ControlContainer:has(:focus-visible) {
+  --_control-container-border: var(--_control-container-border-focus);
+}
+
+.ControlContainer[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

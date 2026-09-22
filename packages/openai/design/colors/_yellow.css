@@ -1,0 +1,23 @@
+:root {
+  /* Yellow */
+  --_yellow-25: #fffbed;
+  --_yellow-50: #fff6d9;
+  --_yellow-75: #ffeeb8;
+  --_yellow-100: #ffe48c;
+  --_yellow-200: #ffdb66;
+  --_yellow-300: #ffd240;
+  --_yellow-400: #ffc300;
+  --_yellow-500: #e0ac00;
+  --_yellow-600: #ba8e00;
+  --_yellow-700: #916f00;
+  --_yellow-800: #6e5400;
+  --_yellow-900: #4d3b00;
+  --_yellow-950: #261d00;
+  --_yellow-1000: #1a1400;
+  --_yellow-a25: color-mix(in srgb, var(--_yellow-400) 8%, transparent);
+  --_yellow-a50: color-mix(in srgb, var(--_yellow-400) 15%, transparent);
+  --_yellow-a75: color-mix(in srgb, var(--_yellow-400) 27%, transparent);
+  --_yellow-a100: color-mix(in srgb, var(--_yellow-400) 45%, transparent);
+  --_yellow-a200: color-mix(in srgb, var(--_yellow-400) 59%, transparent);
+  --_yellow-a300: color-mix(in srgb, var(--_yellow-400) 74%, transparent);
+}

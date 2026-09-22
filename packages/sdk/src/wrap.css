@@ -1,0 +1,63 @@
+.Wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.Wrap[data-align="start"] {
+  align-items: flex-start;
+}
+
+.Wrap[data-align="center"] {
+  align-items: center;
+}
+
+.Wrap[data-align="end"] {
+  align-items: flex-end;
+}
+
+.Wrap[data-justify="start"] {
+  justify-content: flex-start;
+}
+
+.Wrap[data-justify="center"] {
+  justify-content: center;
+}
+
+.Wrap[data-justify="end"] {
+  justify-content: flex-end;
+}
+
+.Wrap[data-justify="between"] {
+  justify-content: space-between;
+}
+
+.Wrap[data-gap="none"] {
+  gap: 0;
+}
+
+.Wrap[data-gap="sm"] {
+  gap: 0.5rem;
+}
+
+.Wrap[data-gap="md"] {
+  gap: 1rem;
+}
+
+.Wrap[data-gap="lg"] {
+  gap: 1.5rem;
+}
+
+.Wrap[data-padding="sm"] {
+  padding: 0.5rem;
+}
+
+.Wrap[data-padding="md"] {
+  padding: 1rem;
+}
+
+.Wrap[data-padding="lg"] {
+  padding: 1.5rem;
+}

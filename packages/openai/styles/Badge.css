@@ -1,0 +1,135 @@
+.Badge {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing);
+  height: var(--_badge-size);
+  padding-inline: var(--_badge-gutter);
+  border-radius: var(--_badge-radius);
+  background-color: var(--_badge-background);
+  box-shadow: var(--_badge-shadow);
+  color: var(--_badge-text);
+  font-family: var(--font-sans);
+  font-size: var(--_badge-font-size);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--_badge-tracking);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.Badge[data-color="secondary"] {
+  --_badge-soft-background: var(--color-background-secondary-soft-alpha);
+  --_badge-soft-text: var(--color-text-secondary-soft);
+  --_badge-solid-background: var(--color-background-secondary-solid);
+  --_badge-solid-text: var(--color-text-secondary-solid);
+  --_badge-outline-border: var(--color-border-secondary-outline);
+  --_badge-outline-text: var(--color-text-secondary-outline);
+}
+
+.Badge[data-color="success"] {
+  --_badge-soft-background: var(--color-background-success-soft-alpha);
+  --_badge-soft-text: var(--color-text-success-soft);
+  --_badge-solid-background: var(--color-background-success-solid);
+  --_badge-solid-text: var(--color-text-success-solid);
+  --_badge-outline-border: var(--color-border-success-outline);
+  --_badge-outline-text: var(--color-text-success-outline);
+}
+
+.Badge[data-color="warning"] {
+  --_badge-soft-background: var(--color-background-warning-soft-alpha);
+  --_badge-soft-text: var(--color-text-warning-soft);
+  --_badge-solid-background: var(--color-background-warning-solid);
+  --_badge-solid-text: var(--color-text-warning-solid);
+  --_badge-outline-border: var(--color-border-warning-outline);
+  --_badge-outline-text: var(--color-text-warning-outline);
+}
+
+.Badge[data-color="danger"] {
+  --_badge-soft-background: var(--color-background-danger-soft-alpha);
+  --_badge-soft-text: var(--color-text-danger-soft);
+  --_badge-solid-background: var(--color-background-danger-solid);
+  --_badge-solid-text: var(--color-text-danger-solid);
+  --_badge-outline-border: var(--color-border-danger-outline);
+  --_badge-outline-text: var(--color-text-danger-outline);
+}
+
+.Badge[data-color="info"] {
+  --_badge-soft-background: var(--color-background-info-soft-alpha);
+  --_badge-soft-text: var(--color-text-info-soft);
+  --_badge-solid-background: var(--color-background-info-solid);
+  --_badge-solid-text: var(--color-text-info-solid);
+  --_badge-outline-border: var(--color-border-info-outline);
+  --_badge-outline-text: var(--color-text-info-outline);
+}
+
+.Badge[data-color="discovery"] {
+  --_badge-soft-background: var(--color-background-discovery-soft-alpha);
+  --_badge-soft-text: var(--color-text-discovery-soft);
+  --_badge-solid-background: var(--color-background-discovery-solid);
+  --_badge-solid-text: var(--color-text-discovery-solid);
+  --_badge-outline-border: var(--color-border-discovery-outline);
+  --_badge-outline-text: var(--color-text-discovery-outline);
+}
+
+.Badge[data-variant="soft"] {
+  --_badge-background: var(--_badge-soft-background);
+  --_badge-shadow: none;
+  --_badge-text: var(--_badge-soft-text);
+}
+
+.Badge[data-variant="solid"] {
+  --_badge-background: var(--_badge-solid-background);
+  --_badge-shadow: none;
+  --_badge-text: var(--_badge-solid-text);
+}
+
+.Badge[data-variant="outline"] {
+  --_badge-background: transparent;
+  --_badge-shadow: inset 0 0 0 var(--border-width) var(--_badge-outline-border);
+  --_badge-text: var(--_badge-outline-text);
+}
+
+.Badge[data-size="sm"] {
+  --_badge-size: calc(var(--control-size-3xs) - 2px);
+  --_badge-gutter: calc(var(--control-gutter-2xs) - 1px);
+  --_badge-radius: var(--radius-xs);
+  --_badge-font-size: var(--font-text-xs-size);
+  --_badge-icon-font-size: var(--font-text-xs-size);
+  --_badge-tracking: var(--font-text-xs-tracking);
+}
+
+.Badge[data-size="md"] {
+  --_badge-size: var(--control-size-3xs);
+  --_badge-gutter: var(--control-gutter-2xs);
+  --_badge-radius: var(--radius-xs);
+  --_badge-font-size: var(--font-text-sm-size);
+  --_badge-icon-font-size: var(--font-text-md-size);
+  --_badge-tracking: var(--font-text-sm-tracking);
+}
+
+.Badge[data-size="lg"] {
+  --_badge-size: var(--control-size-2xs);
+  --_badge-gutter: var(--control-gutter-xs);
+  --_badge-radius: var(--radius-sm);
+  --_badge-font-size: var(--font-text-sm-size);
+  --_badge-icon-font-size: var(--font-text-md-size);
+  --_badge-tracking: var(--font-text-sm-tracking);
+}
+
+.Badge[data-pill] {
+  --_badge-radius: var(--radius-full);
+
+  padding-inline: calc(var(--_badge-gutter) * var(--control-gutter-pill-scaling));
+}
+
+.Badge svg {
+  font-size: var(--_badge-icon-font-size);
+}
+
+.Badge > svg:first-child:not(:only-child) {
+  margin-left: -1px;
+}
+
+.Badge > svg:last-child:not(:only-child) {
+  margin-right: -1px;
+}

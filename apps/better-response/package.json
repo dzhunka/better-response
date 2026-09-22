@@ -1,0 +1,37 @@
+{
+  "name": "@better-response/web",
+  "version": "0.43.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "next typegen && tsc --noEmit",
+    "build:mcp-app": "vite build",
+    "build": "pnpm run build:mcp-app && pnpm run typecheck && next build",
+    "dev": "node ../../scripts/dev-web.mjs",
+    "preview:ui": "vite . --open /preview/index.html",
+    "preview:layout": "vite --open /layout-preview.html",
+    "start": "next start",
+    "probe": "pnpm run build && node scripts/probe-http.mjs"
+  },
+  "dependencies": {
+    "@better-response/common": "workspace:*",
+    "@better-response/engawa": "workspace:*",
+    "@better-response/sdk": "workspace:*",
+    "@modelcontextprotocol/ext-apps": "^1.7.4",
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "next": "^16.2.12",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "concurrently": "^10.0.4",
+    "lucide-react": "^1.29.0",
+    "tailwindcss": "^4.3.3",
+    "vite": "^6.0.5",
+    "vite-plugin-singlefile": "^2.1.0"
+  }
+}

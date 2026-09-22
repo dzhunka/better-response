@@ -1,0 +1,76 @@
+.Checkbox {
+  --_checkbox-background: transparent;
+  --_checkbox-border: var(--color-border-control);
+  --_checkbox-indicator: transparent;
+
+  appearance: none;
+  position: relative;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0;
+  padding: 0;
+  border: var(--border-width) solid var(--_checkbox-border);
+  border-radius: var(--radius-xs);
+  background-color: var(--_checkbox-background);
+  color: var(--_checkbox-indicator);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-duration-basic) var(--transition-ease-basic),
+    border-color var(--transition-duration-basic) var(--transition-ease-basic);
+}
+
+.Checkbox::after {
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  box-sizing: border-box;
+  width: 0.5rem;
+  height: 0.3125rem;
+  transform: rotate(-45deg) scale(0.75);
+  border-bottom: 0.125rem solid currentColor;
+  border-left: 0.125rem solid currentColor;
+  content: "";
+  opacity: 0;
+  transition:
+    opacity var(--transition-duration-basic) var(--transition-ease-basic),
+    transform var(--transition-duration-basic) var(--transition-ease-basic);
+}
+
+.Checkbox:not(:checked, :disabled):hover {
+  --_checkbox-border: var(--color-border-control-hover);
+}
+
+.Checkbox:checked {
+  --_checkbox-background: var(--color-background-control-selected);
+  --_checkbox-border: var(--color-border-control-selected);
+  --_checkbox-indicator: var(--color-text-inverse);
+}
+
+.Checkbox:checked::after {
+  transform: rotate(-45deg) scale(1);
+  opacity: 1;
+}
+
+.Checkbox:focus {
+  outline: none;
+}
+
+.Checkbox:focus-visible {
+  outline: 0.125rem solid var(--color-ring);
+  outline-offset: 0.125rem;
+}
+
+.Checkbox:disabled {
+  --_checkbox-background: var(--color-background-control-disabled);
+  --_checkbox-border: var(--color-border-control-disabled);
+
+  cursor: not-allowed;
+}
+
+.Checkbox:checked:disabled {
+  --_checkbox-background: var(--color-background-control-selected-disabled);
+  --_checkbox-border: var(--color-border-control-selected-disabled);
+  --_checkbox-indicator: var(--color-text-control-selected-disabled);
+}

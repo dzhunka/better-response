@@ -1,0 +1,23 @@
+:root {
+  /* Blue */
+  --_blue-25: #f5faff;
+  --_blue-50: #e5f3ff;
+  --_blue-75: #cce6ff;
+  --_blue-100: #99ceff;
+  --_blue-200: #66b5ff;
+  --_blue-300: #339cff;
+  --_blue-400: #0285ff;
+  --_blue-500: #0169cc;
+  --_blue-600: #004f99;
+  --_blue-700: #003f7a;
+  --_blue-800: #013566;
+  --_blue-900: #00284d;
+  --_blue-950: #000e1a;
+  --_blue-1000: #000d19;
+  --_blue-a25: color-mix(in srgb, var(--_blue-400) 4%, transparent);
+  --_blue-a50: color-mix(in srgb, var(--_blue-400) 13%, transparent);
+  --_blue-a75: color-mix(in srgb, var(--_blue-400) 25%, transparent);
+  --_blue-a100: color-mix(in srgb, var(--_blue-400) 40%, transparent);
+  --_blue-a200: color-mix(in srgb, var(--_blue-400) 60%, transparent);
+  --_blue-a300: color-mix(in srgb, var(--_blue-400) 80%, transparent);
+}

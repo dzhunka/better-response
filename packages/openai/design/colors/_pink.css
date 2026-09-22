@@ -1,0 +1,23 @@
+:root {
+  /* Pink */
+  --_pink-25: #fff4f9;
+  --_pink-50: #ffe8f3;
+  --_pink-75: #ffd4e8;
+  --_pink-100: #ffbada;
+  --_pink-200: #ffa3ce;
+  --_pink-300: #ff8cc1;
+  --_pink-400: #ff66ad;
+  --_pink-500: #e04c91;
+  --_pink-600: #ba437a;
+  --_pink-700: #963c67;
+  --_pink-800: #6e2c4a;
+  --_pink-900: #4d1f34;
+  --_pink-950: #29101c;
+  --_pink-1000: #1a0a11;
+  --_pink-a25: color-mix(in srgb, var(--_pink-400) 8%, transparent);
+  --_pink-a50: color-mix(in srgb, var(--_pink-400) 16%, transparent);
+  --_pink-a75: color-mix(in srgb, var(--_pink-400) 28%, transparent);
+  --_pink-a100: color-mix(in srgb, var(--_pink-400) 45%, transparent);
+  --_pink-a200: color-mix(in srgb, var(--_pink-400) 60%, transparent);
+  --_pink-a300: color-mix(in srgb, var(--_pink-400) 76%, transparent);
+}

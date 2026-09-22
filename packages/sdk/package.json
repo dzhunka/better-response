@@ -1,0 +1,27 @@
+{
+  "name": "@better-response/sdk",
+  "version": "0.43.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./grid": "./src/grid.tsx",
+    "./image": "./src/image.tsx",
+    "./scroll": "./src/scroll.tsx",
+    "./separator": "./src/separator.tsx",
+    "./spacer": "./src/spacer.tsx",
+    "./stack": "./src/stack.tsx",
+    "./text": "./src/text.tsx",
+    "./wrap": "./src/wrap.tsx"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "react": "^19.2.8",
+    "typescript": "^5.7.2"
+  }
+}

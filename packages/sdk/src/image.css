@@ -1,0 +1,19 @@
+.Image {
+  max-width: 100%;
+}
+
+.Image[data-aspect="auto"] {
+  height: auto;
+}
+
+.Image[data-aspect="square"] {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.Image[data-aspect="video"] {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}

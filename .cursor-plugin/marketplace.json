@@ -1,0 +1,9 @@
+{
+  "name": "better-response-local",
+  "plugins": [
+    {
+      "name": "better-response",
+      "source": "plugins/better-response/dist"
+    }
+  ]
+}

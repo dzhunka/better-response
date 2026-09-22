@@ -1,0 +1,23 @@
+:root {
+  /* Orange */
+  --_orange-25: #fff5f0;
+  --_orange-50: #ffe7d9;
+  --_orange-75: #ffcfb4;
+  --_orange-100: #ffb790;
+  --_orange-200: #ff9e6c;
+  --_orange-300: #ff8549;
+  --_orange-400: #fb6a22;
+  --_orange-500: #e25507;
+  --_orange-600: #b9480d;
+  --_orange-700: #923b0f;
+  --_orange-800: #6d2e0f;
+  --_orange-900: #4a2206;
+  --_orange-950: #281105;
+  --_orange-1000: #211107;
+  --_orange-a25: color-mix(in srgb, var(--_orange-400) 7%, transparent);
+  --_orange-a50: color-mix(in srgb, var(--_orange-400) 16%, transparent);
+  --_orange-a75: color-mix(in srgb, var(--_orange-400) 33%, transparent);
+  --_orange-a100: color-mix(in srgb, var(--_orange-400) 48%, transparent);
+  --_orange-a200: color-mix(in srgb, var(--_orange-400) 65%, transparent);
+  --_orange-a300: color-mix(in srgb, var(--_orange-400) 81%, transparent);
+}

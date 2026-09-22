@@ -1,0 +1,83 @@
+.Stack {
+  display: flex;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.Stack[data-direction="vertical"] {
+  flex-direction: column;
+}
+
+.Stack[data-direction="horizontal"] {
+  flex-direction: row;
+}
+
+.Stack[data-direction="horizontal"] > * {
+  min-width: 0;
+}
+
+.Stack[data-align="start"] {
+  align-items: flex-start;
+}
+
+.Stack[data-align="center"] {
+  align-items: center;
+}
+
+.Stack[data-align="end"] {
+  align-items: flex-end;
+}
+
+.Stack[data-align="stretch"] {
+  align-items: stretch;
+}
+
+.Stack[data-justify="start"] {
+  justify-content: flex-start;
+}
+
+.Stack[data-justify="center"] {
+  justify-content: center;
+}
+
+.Stack[data-justify="end"] {
+  justify-content: flex-end;
+}
+
+.Stack[data-justify="between"] {
+  justify-content: space-between;
+}
+
+.Stack[data-gap="none"] {
+  gap: 0;
+}
+
+.Stack[data-gap="sm"] {
+  gap: 0.5rem;
+}
+
+.Stack[data-gap="md"] {
+  gap: 1rem;
+}
+
+.Stack[data-gap="lg"] {
+  gap: 1.5rem;
+}
+
+.Stack[data-padding="sm"] {
+  padding: 0.5rem;
+}
+
+.Stack[data-padding="md"] {
+  padding: 1rem;
+}
+
+.Stack[data-padding="lg"] {
+  padding: 1.5rem;
+}
+
+.Stack[data-flex="true"] {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+}

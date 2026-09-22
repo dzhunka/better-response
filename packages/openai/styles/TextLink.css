@@ -1,0 +1,44 @@
+.TextLink {
+  --_text-link-color: currentcolor;
+  --_text-link-color-hover: color-mix(in oklab, currentcolor 80%, transparent);
+  --_text-link-decoration: none;
+  --_text-link-decoration-color: transparent;
+
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 0.5);
+  border-radius: var(--radius-sm);
+  color: var(--_text-link-color);
+  cursor: pointer;
+  font-weight: inherit;
+  overflow-wrap: anywhere;
+  text-decoration-line: var(--_text-link-decoration);
+  text-decoration-color: var(--_text-link-decoration-color);
+  text-underline-offset: 0.1em;
+  transition:
+    opacity var(--transition-duration-basic) var(--transition-ease-basic),
+    color var(--transition-duration-basic) var(--transition-ease-basic),
+    box-shadow var(--transition-duration-basic) var(--transition-ease-basic),
+    text-decoration-color var(--transition-duration-basic) var(--transition-ease-basic);
+}
+
+.TextLink[data-primary] {
+  --_text-link-color: var(--color-text-link);
+  --_text-link-color-hover: var(--color-text-link-hover);
+}
+
+.TextLink[data-underline] {
+  --_text-link-decoration: underline;
+  --_text-link-decoration-color: color-mix(in oklab, currentcolor 70%, transparent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .TextLink:hover {
+    color: var(--_text-link-color-hover);
+  }
+}
+
+.TextLink:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 1px;
+}

@@ -1,0 +1,146 @@
+.Text {
+  color: var(--_text-color);
+  font-family: var(--font-sans);
+  font-size: var(--_text-font-size);
+  font-weight: var(--_text-font-weight, var(--_text-variant-font-weight));
+  letter-spacing: var(--_text-tracking);
+  line-height: var(--_text-line-height);
+  margin: 0;
+}
+
+.Text[data-variant="heading-5xl"] {
+  --_text-font-size: var(--font-heading-5xl-size);
+  --_text-line-height: var(--font-heading-5xl-line-height);
+  --_text-tracking: var(--font-heading-5xl-tracking);
+  --_text-variant-font-weight: var(--font-heading-5xl-weight);
+}
+
+.Text[data-variant="heading-4xl"] {
+  --_text-font-size: var(--font-heading-4xl-size);
+  --_text-line-height: var(--font-heading-4xl-line-height);
+  --_text-tracking: var(--font-heading-4xl-tracking);
+  --_text-variant-font-weight: var(--font-heading-4xl-weight);
+}
+
+.Text[data-variant="heading-3xl"] {
+  --_text-font-size: var(--font-heading-3xl-size);
+  --_text-line-height: var(--font-heading-3xl-line-height);
+  --_text-tracking: var(--font-heading-3xl-tracking);
+  --_text-variant-font-weight: var(--font-heading-3xl-weight);
+}
+
+.Text[data-variant="heading-2xl"] {
+  --_text-font-size: var(--font-heading-2xl-size);
+  --_text-line-height: var(--font-heading-2xl-line-height);
+  --_text-tracking: var(--font-heading-2xl-tracking);
+  --_text-variant-font-weight: var(--font-heading-2xl-weight);
+}
+
+.Text[data-variant="heading-xl"] {
+  --_text-font-size: var(--font-heading-xl-size);
+  --_text-line-height: var(--font-heading-xl-line-height);
+  --_text-tracking: var(--font-heading-xl-tracking);
+  --_text-variant-font-weight: var(--font-heading-xl-weight);
+}
+
+.Text[data-variant="heading-lg"] {
+  --_text-font-size: var(--font-heading-lg-size);
+  --_text-line-height: var(--font-heading-lg-line-height);
+  --_text-tracking: var(--font-heading-lg-tracking);
+  --_text-variant-font-weight: var(--font-heading-lg-weight);
+}
+
+.Text[data-variant="heading-md"] {
+  --_text-font-size: var(--font-heading-md-size);
+  --_text-line-height: var(--font-heading-md-line-height);
+  --_text-tracking: var(--font-heading-md-tracking);
+  --_text-variant-font-weight: var(--font-heading-md-weight);
+}
+
+.Text[data-variant="heading-sm"] {
+  --_text-font-size: var(--font-heading-sm-size);
+  --_text-line-height: var(--font-heading-sm-line-height);
+  --_text-tracking: var(--font-heading-sm-tracking);
+  --_text-variant-font-weight: var(--font-heading-sm-weight);
+}
+
+.Text[data-variant="heading-xs"] {
+  --_text-font-size: var(--font-heading-xs-size);
+  --_text-line-height: var(--font-heading-xs-line-height);
+  --_text-tracking: var(--font-heading-xs-tracking);
+  --_text-variant-font-weight: var(--font-heading-xs-weight);
+}
+
+.Text[data-variant="text-lg"] {
+  --_text-font-size: var(--font-text-lg-size);
+  --_text-line-height: var(--font-text-lg-line-height);
+  --_text-tracking: var(--font-text-lg-tracking);
+  --_text-variant-font-weight: var(--font-text-lg-weight);
+}
+
+.Text[data-variant="text-md"] {
+  --_text-font-size: var(--font-text-md-size);
+  --_text-line-height: var(--font-text-md-line-height);
+  --_text-tracking: var(--font-text-md-tracking);
+  --_text-variant-font-weight: var(--font-text-md-weight);
+}
+
+.Text[data-variant="text-sm"] {
+  --_text-font-size: var(--font-text-sm-size);
+  --_text-line-height: var(--font-text-sm-line-height);
+  --_text-tracking: var(--font-text-sm-tracking);
+  --_text-variant-font-weight: var(--font-text-sm-weight);
+}
+
+.Text[data-variant="text-xs"] {
+  --_text-font-size: var(--font-text-xs-size);
+  --_text-line-height: var(--font-text-xs-line-height);
+  --_text-tracking: var(--font-text-xs-tracking);
+  --_text-variant-font-weight: var(--font-text-xs-weight);
+}
+
+.Text[data-variant="text-2xs"] {
+  --_text-font-size: var(--font-text-2xs-size);
+  --_text-line-height: var(--font-text-2xs-line-height);
+  --_text-tracking: var(--font-text-2xs-tracking);
+  --_text-variant-font-weight: var(--font-text-2xs-weight);
+}
+
+.Text[data-variant="text-3xs"] {
+  --_text-font-size: var(--font-text-3xs-size);
+  --_text-line-height: var(--font-text-3xs-line-height);
+  --_text-tracking: var(--font-text-3xs-tracking);
+  --_text-variant-font-weight: var(--font-text-3xs-weight);
+}
+
+.Text[data-tone="default"] {
+  --_text-color: var(--color-text);
+}
+
+.Text[data-tone="secondary"] {
+  --_text-color: var(--color-text-secondary);
+}
+
+.Text[data-tone="tertiary"] {
+  --_text-color: var(--color-text-tertiary);
+}
+
+.Text[data-tone="inverse"] {
+  --_text-color: var(--color-text-inverse);
+}
+
+.Text[data-weight="normal"] {
+  --_text-font-weight: var(--font-weight-normal);
+}
+
+.Text[data-weight="medium"] {
+  --_text-font-weight: var(--font-weight-medium);
+}
+
+.Text[data-weight="semibold"] {
+  --_text-font-weight: var(--font-weight-semibold);
+}
+
+.Text[data-weight="bold"] {
+  --_text-font-weight: var(--font-weight-bold);
+}

@@ -1,0 +1,17 @@
+.Surface {
+  --_surface-hairline-color: light-dark(rgb(0 0 0 / 8%), transparent);
+
+  box-sizing: border-box;
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface-elevated);
+  box-shadow:
+    var(--shadow),
+    0 0 0 var(--shadow-hairline-width) var(--_surface-hairline-color);
+  color: var(--color-text);
+}
+
+@media (resolution >= 150dpi), (resolution >= 1.5dppx) {
+  .Surface {
+    --_surface-hairline-color: light-dark(rgb(0 0 0 / 10%), transparent);
+  }
+}

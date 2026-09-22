@@ -1,0 +1,23 @@
+:root {
+  /* Purple */
+  --_purple-25: #f9f5fe;
+  --_purple-50: #efe5fe;
+  --_purple-75: #e0cefd;
+  --_purple-100: #ceb0fb;
+  --_purple-200: #be95fa;
+  --_purple-300: #ad7bf9;
+  --_purple-400: #924ff7;
+  --_purple-500: #8046d9;
+  --_purple-600: #6b3ab4;
+  --_purple-700: #532d8d;
+  --_purple-800: #3f226a;
+  --_purple-900: #2c184a;
+  --_purple-950: #160c25;
+  --_purple-1000: #100a19;
+  --_purple-a25: color-mix(in srgb, var(--_purple-400) 6%, transparent);
+  --_purple-a50: color-mix(in srgb, var(--_purple-400) 15%, transparent);
+  --_purple-a75: color-mix(in srgb, var(--_purple-400) 28%, transparent);
+  --_purple-a100: color-mix(in srgb, var(--_purple-400) 45%, transparent);
+  --_purple-a200: color-mix(in srgb, var(--_purple-400) 60%, transparent);
+  --_purple-a300: color-mix(in srgb, var(--_purple-400) 75%, transparent);
+}

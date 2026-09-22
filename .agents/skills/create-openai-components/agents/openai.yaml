@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenAI Component Authoring"
+  short_description: "Build OpenAI view, UI, and components"
+  default_prompt: "Use $create-openai-components to add or change an OpenAI View primitive, UI control, or Component."

@@ -1,0 +1,51 @@
+.Grid {
+  display: grid;
+  max-width: 100%;
+  min-width: 0;
+  width: 100%;
+}
+
+.Grid > * {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.Grid[data-columns="2"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.Grid[data-columns="3"] {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.Grid[data-columns="4"] {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.Grid[data-gap="none"] {
+  gap: 0;
+}
+
+.Grid[data-gap="sm"] {
+  gap: 0.5rem;
+}
+
+.Grid[data-gap="md"] {
+  gap: 1rem;
+}
+
+.Grid[data-gap="lg"] {
+  gap: 1.5rem;
+}
+
+.Grid[data-padding="sm"] {
+  padding: 0.5rem;
+}
+
+.Grid[data-padding="md"] {
+  padding: 1rem;
+}
+
+.Grid[data-padding="lg"] {
+  padding: 1.5rem;
+}

@@ -1,0 +1,156 @@
+.Textarea {
+  --_textarea-line-height: 1.25rem;
+  --_textarea-padding-block: calc(
+    0.5 * (var(--_textarea-size) - var(--_textarea-line-height))
+  );
+
+  appearance: none;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: var(--_textarea-padding-block) var(--_textarea-gutter);
+  border: 0;
+  border-radius: var(--_textarea-radius);
+  background-color: var(--_textarea-background);
+  box-shadow:
+    0 0 0 var(--border-width)
+    var(--_textarea-border, var(--_textarea-border-default)) inset;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--_textarea-font-size);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--_textarea-line-height);
+  resize: none;
+  transition:
+    background-color var(--transition-duration-basic) var(--transition-ease-basic),
+    box-shadow var(--transition-duration-basic) var(--transition-ease-basic);
+}
+
+.Textarea[data-variant="outline"] {
+  --_textarea-background: transparent;
+  --_textarea-border-default: var(--color-border-primary-outline);
+  --_textarea-border-hover: var(--color-border-primary-outline-hover);
+  --_textarea-border-focus: var(--color-border-form-control-focus);
+}
+
+.Textarea[data-variant="soft"] {
+  --_textarea-background: var(--color-background-primary-soft-alpha);
+  --_textarea-border-default: transparent;
+  --_textarea-border-hover: transparent;
+  --_textarea-border-focus: var(--color-border-form-control-soft-focus);
+}
+
+.Textarea[data-size="3xs"] {
+  --_textarea-size: var(--control-size-3xs);
+  --_textarea-font-size: var(--control-font-size-sm);
+  --_textarea-radius: var(--control-radius-sm);
+  --_textarea-gutter: var(--control-gutter-xs);
+}
+
+.Textarea[data-size="2xs"] {
+  --_textarea-size: var(--control-size-2xs);
+  --_textarea-font-size: var(--control-font-size-sm);
+  --_textarea-radius: var(--control-radius-sm);
+  --_textarea-gutter: var(--control-gutter-xs);
+}
+
+.Textarea[data-size="xs"] {
+  --_textarea-size: var(--control-size-xs);
+  --_textarea-font-size: var(--control-font-size-md);
+  --_textarea-radius: var(--control-radius-sm);
+  --_textarea-gutter: var(--control-gutter-xs);
+}
+
+.Textarea[data-size="sm"] {
+  --_textarea-size: var(--control-size-sm);
+  --_textarea-font-size: var(--control-font-size-md);
+  --_textarea-radius: var(--control-radius-md);
+  --_textarea-gutter: var(--control-gutter-sm);
+}
+
+.Textarea[data-size="md"] {
+  --_textarea-size: var(--control-size-md);
+  --_textarea-font-size: var(--control-font-size-md);
+  --_textarea-radius: var(--control-radius-md);
+  --_textarea-gutter: var(--control-gutter-md);
+}
+
+.Textarea[data-size="lg"] {
+  --_textarea-size: var(--control-size-lg);
+  --_textarea-font-size: var(--control-font-size-md);
+  --_textarea-radius: var(--control-radius-md);
+  --_textarea-gutter: var(--control-gutter-md);
+}
+
+.Textarea[data-size="xl"] {
+  --_textarea-size: var(--control-size-xl);
+  --_textarea-font-size: var(--control-font-size-lg);
+  --_textarea-radius: var(--control-radius-lg);
+  --_textarea-gutter: var(--control-gutter-lg);
+}
+
+.Textarea[data-size="2xl"] {
+  --_textarea-size: var(--control-size-2xl);
+  --_textarea-font-size: var(--control-font-size-lg);
+  --_textarea-radius: var(--control-radius-xl);
+  --_textarea-gutter: var(--control-gutter-xl);
+}
+
+.Textarea[data-size="3xl"] {
+  --_textarea-size: var(--control-size-3xl);
+  --_textarea-font-size: var(--control-font-size-lg);
+  --_textarea-radius: var(--control-radius-xl);
+  --_textarea-gutter: var(--control-gutter-xl);
+}
+
+.Textarea[data-gutter-size="2xs"] {
+  --_textarea-gutter: var(--control-gutter-2xs);
+}
+
+.Textarea[data-gutter-size="xs"] {
+  --_textarea-gutter: var(--control-gutter-xs);
+}
+
+.Textarea[data-gutter-size="sm"] {
+  --_textarea-gutter: var(--control-gutter-sm);
+}
+
+.Textarea[data-gutter-size="md"] {
+  --_textarea-gutter: var(--control-gutter-md);
+}
+
+.Textarea[data-gutter-size="lg"] {
+  --_textarea-gutter: var(--control-gutter-lg);
+}
+
+.Textarea[data-gutter-size="xl"] {
+  --_textarea-gutter: var(--control-gutter-xl);
+}
+
+.Textarea::placeholder {
+  color: var(--color-text-tertiary);
+  opacity: 1;
+}
+
+.Textarea:hover {
+  --_textarea-border: var(--_textarea-border-hover);
+}
+
+.Textarea:focus {
+  --_textarea-border: var(--_textarea-border-focus);
+
+  outline: 0;
+}
+
+.Textarea[aria-invalid="true"] {
+  --_textarea-border: var(--color-border-form-control-invalid);
+}
+
+.Textarea:disabled {
+  --_textarea-border: var(--_textarea-border-default);
+
+  cursor: not-allowed;
+  opacity: 0.5;
+}

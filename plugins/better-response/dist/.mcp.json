@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "visualize": {
+      "type": "http",
+      "url": "https://betterresponse.vercel.app/api/mcp"
+    }
+  }
+}
