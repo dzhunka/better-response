@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import "../styles.css";
+
 export const metadata: Metadata = {
   title: "Privacy Policy · Better Response",
   description: "What Better Response receives, what it stores, and for how long.",

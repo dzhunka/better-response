@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import "../styles.css";
+
 export const metadata: Metadata = {
   title: "Terms of Use · Better Response",
   description: "The terms under which Better Response is offered.",

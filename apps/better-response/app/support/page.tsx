@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import "../styles.css";
+
 export const metadata: Metadata = {
   title: "Support · Better Response",
   description: "How to report a problem with Better Response or ask a question.",
