@@ -11,10 +11,12 @@ export function DemoCard({
   src,
   title,
   lazy,
+  inactive,
 }: {
   src: string;
   title: string;
   lazy?: boolean;
+  inactive?: boolean;
 }) {
   const frame = useRef<HTMLIFrameElement>(null);
   const [height, setHeight] = useState<number>();
@@ -38,6 +40,7 @@ export function DemoCard({
       const body = element.contentDocument?.body;
 
       if (body) {
+        observer.disconnect();
         observer.observe(body);
         setHeight(body.scrollHeight);
       }
@@ -50,11 +53,15 @@ export function DemoCard({
       element.removeEventListener("load", watch);
       observer.disconnect();
     };
-  }, []);
+  }, [src]);
 
   return (
-    <div className="card">
+    <div className="card" data-inactive={inactive || undefined}>
+      {/* Keyed so a changed src mounts a new frame rather than navigating this
+          one, which would push a session history entry and turn the browser's
+          back button into an undo for whatever changed the src. */}
       <iframe
+        key={src}
         ref={frame}
         src={src}
         title={title}
