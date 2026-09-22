@@ -1,10 +1,43 @@
+/*
+ * Two rules hold this page together.
+ *
+ * 1. --signal only ever fills an interactive or live element. It is never text
+ *    on --paper, where it would fail contrast, and never chrome or decoration.
+ * 2. Radius is either a full stadium or the single large bottom-right cut taken
+ *    from the logo mark. Nothing gets a uniform middling corner.
+ */
+
 :root {
+  --paper: #fafaf8;
+  --ink: #16191c;
+  --surface: #f0f0ec;
+  --muted: #5a6168;
+  --hairline: #e1e2df;
+  --signal: #d9f249;
+  --signal-ink: #16191c;
+
+  --gutter: clamp(20px, 5vw, 56px);
+  --measure: 1120px;
+  --cut: 40px;
+
   color-scheme: light dark;
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
-  background: #f4f1e9;
-  color: #1f211d;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0f1215;
+    --ink: #e9eae6;
+    --surface: #171b1f;
+    --muted: #9aa2a9;
+    --hairline: #262b30;
+    --signal-ink: #0f1215;
+  }
 }
 
 * {
@@ -15,326 +48,488 @@ body {
   margin: 0;
 }
 
-main {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 32px;
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
 }
 
-section {
-  width: min(720px, 100%);
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
 }
 
-.hero {
-  min-height: min(88vh, 720px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variation-settings: "wdth" 87.5;
 }
 
-.band {
-  width: min(1040px, 100%);
-  padding-block: 96px;
-  border-top: 1px solid currentColor;
-  border-top-color: color-mix(in srgb, currentColor 14%, transparent);
+/* Bands. The mark is three equal bars on a fixed gutter; the page is the same
+   idea at full width, with the hairline running edge to edge. */
+
+nav,
+section,
+footer {
+  border-top: 1px solid var(--hairline);
 }
 
-.band h2 {
+.inner {
+  width: 100%;
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+h1 {
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.875rem, 4vw, 2.75rem);
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
+  max-width: 21ch;
+  font-size: clamp(2.5rem, 6.4vw, 4.75rem);
+  letter-spacing: -0.035em;
+  line-height: 0.99;
+}
+
+h2 {
+  margin: 0;
+  max-width: 24ch;
+  font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+  letter-spacing: -0.028em;
+  line-height: 1.06;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  letter-spacing: -0.015em;
 }
 
 .lede {
-  max-width: 60ch;
+  max-width: 58ch;
   margin: 20px 0 0;
-  color: #55594f;
+  color: var(--muted);
+  font-size: 1.125rem;
+  line-height: 1.55;
+}
+
+/* Nav */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  border-top: 0;
+  border-bottom: 1px solid var(--hairline);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.nav .inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 64px;
+}
+
+.wordmark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 1.0625rem;
-  line-height: 1.6;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.wordmark svg {
+  display: block;
+  width: 22px;
+  height: 22px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 11px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.7;
+  white-space: nowrap;
+}
+
+.nav .spacer {
+  flex: 1;
+}
+
+.nav a:not(.action):not(.wordmark) {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+
+.nav a:not(.action):not(.wordmark):hover {
+  color: var(--ink);
+}
+
+/* Actions. Stadium, and the only place --signal appears. */
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 9px 18px;
+  background: var(--signal);
+  color: var(--signal-ink);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 120ms ease;
+}
+
+.action:hover {
+  transform: translateY(-1px);
+}
+
+.action:active {
+  transform: translateY(0);
+}
+
+.action.outline {
+  background: transparent;
+  border-color: var(--hairline);
+  color: var(--ink);
+}
+
+.action.outline:hover {
+  border-color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .action {
+    transition: none;
+  }
+
+  .action:hover {
+    transform: none;
+  }
+}
+
+/* Hero */
+
+.hero {
+  border-top: 0;
+}
+
+.hero .inner {
+  padding-block: clamp(56px, 9vw, 112px) clamp(48px, 7vw, 88px);
+}
+
+.hero .lede {
+  max-width: 52ch;
+  margin-top: 26px;
+  font-size: clamp(1.125rem, 1.8vw, 1.3125rem);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+/* The chat frame. Square, except for the one cut lifted from the mark. */
+
+.frame {
+  margin-top: clamp(40px, 6vw, 72px);
+  padding-bottom: 20px;
+  border: 1px solid var(--hairline);
+  border-radius: 0 0 var(--cut) 0;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.frame header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--hairline);
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+
+.frame header .spacer {
+  flex: 1;
+}
+
+/* --signal is a light hue, so a small mark of it needs the ring to stay
+   legible against --paper. */
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--signal);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink) 30%, transparent);
+}
+
+/* A host renders a conversation as a centred column inside a wide window, so
+   the turns and the render it produced share one measure. */
+.turns,
+.frame iframe {
+  margin-inline: auto;
+}
+
+/* 744 less the 16px inset leaves a 712px column, so the turns and the render
+   below them share one left edge. */
+.turns {
+  max-width: 744px;
+  padding: 22px 16px 0;
+}
+
+.frame iframe {
+  max-width: 712px;
+}
+
+.said {
+  max-width: 40ch;
+  margin: 0 0 16px auto;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+  font-size: 0.875rem;
+}
+
+.replied {
+  max-width: 48ch;
+  margin: 0 0 16px;
+  font-size: 0.9375rem;
+}
+
+.frame iframe,
+.compare iframe,
+.compare pre {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-top: 1px solid var(--hairline);
+  background: var(--paper);
+}
+
+.compare iframe,
+.compare pre {
+  margin: 0;
+}
+
+.frame iframe {
+  height: 240px;
+}
+
+/* The same answer, twice */
+
+.band .inner {
+  padding-block: clamp(56px, 8vw, 104px);
 }
 
 .compare {
   display: grid;
-  gap: 24px;
-  margin-top: 40px;
+  gap: 28px;
+  margin-top: clamp(32px, 4vw, 48px);
   grid-template-columns: 1fr;
 }
 
 .compare figure {
-  margin: 0;
+  display: flex;
+  flex-direction: column;
   min-width: 0;
+  margin: 0;
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+}
+
+/* Only the structured panel gets the cut. Flat text stays a flat rectangle. */
+.compare .structured {
+  border-radius: 0 0 var(--cut) 0;
+  overflow: hidden;
 }
 
 .compare figcaption {
-  margin-bottom: 12px;
+  padding: 11px 16px;
+  color: var(--muted);
   font-size: 0.8125rem;
-  font-weight: 650;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #805831;
 }
 
 .compare pre,
 .compare iframe {
-  width: 100%;
-  height: 340px;
-  margin: 0;
-  border: 1px solid color-mix(in srgb, currentColor 16%, transparent);
-  border-radius: 10px;
-  background: color-mix(in srgb, currentColor 4%, transparent);
+  height: 320px;
 }
 
 .compare pre {
-  padding: 20px;
+  padding: 18px 16px;
   overflow: auto;
-  font-size: 0.8125rem;
-  line-height: 1.6;
-  color: #55594f;
+  color: var(--muted);
+  font-size: 0.6875rem;
+  line-height: 1.8;
   white-space: pre;
 }
 
-.compare iframe {
-  display: block;
-  background: #fff;
-  color-scheme: light;
+/* Install */
+
+.address {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin: 32px 0 0;
 }
 
-.endpoint {
-  margin: 28px 0 0;
-}
-
-.endpoint code {
-  display: inline-block;
-  padding: 10px 14px;
-  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
-  border-radius: 8px;
-  font-size: 0.9375rem;
+.address code {
+  padding: 11px 15px;
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  font-size: 0.875rem;
   word-break: break-all;
 }
 
 .hosts {
   display: grid;
-  gap: 32px;
-  margin-top: 44px;
+  gap: 40px;
+  margin-top: clamp(44px, 5vw, 64px);
   grid-template-columns: 1fr;
 }
 
-.hosts h3 {
-  margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.375rem;
-  font-weight: 500;
+.hosts .head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .hosts p {
-  max-width: 46ch;
-  margin: 12px 0 0;
-  color: #55594f;
+  max-width: 44ch;
+  margin: 14px 0 0;
+  color: var(--muted);
   font-size: 0.9375rem;
-  line-height: 1.6;
 }
 
-.verified,
-.untested {
-  margin-top: 6px !important;
-  font-size: 0.75rem !important;
-  font-weight: 650;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.verified {
-  color: #3f6b3f !important;
-}
-
-.untested {
-  color: #8a6a2f !important;
-}
-
-.action {
-  display: inline-block;
-  padding: 10px 18px;
-  border-radius: 999px;
-  background: #1f211d;
-  color: #f4f1e9;
-  font-size: 0.9375rem;
-  font-weight: 650;
-  text-decoration: none;
+.hosts .action {
+  margin-top: 18px;
 }
 
 code.block {
   display: block;
+  margin-top: 16px;
   padding: 12px 14px;
-  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
-  border-radius: 8px;
+  border: 1px solid var(--hairline);
+  background: var(--surface);
   font-size: 0.8125rem;
-  line-height: 1.5;
+  line-height: 1.6;
   white-space: pre-wrap;
   word-break: break-all;
 }
 
 .note {
-  max-width: 68ch;
-  margin: 44px 0 0;
-  color: #55594f;
-  font-size: 0.875rem;
-  line-height: 1.6;
-}
-
-footer {
-  width: min(1040px, 100%);
-  padding-block: 40px 8px;
-  border-top: 1px solid color-mix(in srgb, currentColor 14%, transparent);
-}
-
-.colophon {
-  margin: 16px 0 0;
-  color: #55594f;
+  max-width: 64ch;
+  margin: clamp(44px, 5vw, 64px) 0 0;
+  color: var(--muted);
   font-size: 0.875rem;
 }
 
-@media (min-width: 860px) {
-  .compare {
-    grid-template-columns: 1fr 1fr;
-  }
+/* Footer */
 
-  .hosts {
-    grid-template-columns: 1fr 1fr;
-    gap: 40px 56px;
-  }
-}
-
-.logo {
-  display: block;
-  width: clamp(5rem, 14vw, 7rem);
-  height: auto;
-  margin: 0 0 32px;
-}
-
-.eyebrow,
-.tagline {
-  font-size: 0.875rem;
-  font-weight: 650;
-  letter-spacing: 0.04em;
-}
-
-.eyebrow {
-  margin: 0 0 24px;
-  color: #805831;
-  text-transform: uppercase;
-}
-
-h1 {
-  max-width: 680px;
-  margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(3rem, 9vw, 6.5rem);
-  font-weight: 500;
-  letter-spacing: -0.055em;
-  line-height: 0.94;
-}
-
-.description {
-  max-width: 580px;
-  margin: 32px 0 0;
-  color: #55594f;
-  font-size: clamp(1.125rem, 2.5vw, 1.4rem);
-  line-height: 1.55;
-}
-
-.tagline {
-  margin: 64px 0 0;
+footer .inner {
+  padding-block: 40px 48px;
 }
 
 .site-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
-  margin: 24px 0 0;
+  gap: 22px;
+  margin: 0;
   font-size: 0.9375rem;
 }
 
-main.legal {
-  place-items: start center;
-  padding-block: 64px;
+.colophon {
+  max-width: 48ch;
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.mission {
+  margin: clamp(40px, 5vw, 64px) 0 0;
+  font-size: clamp(1.125rem, 2.4vw, 1.625rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+@media (min-width: 900px) {
+  .compare,
+  .hosts {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hosts {
+    gap: 48px 64px;
+  }
+}
+
+/* The wordmark and the one action are all the bar can hold. */
+@media (max-width: 560px) {
+  .nav .pill,
+  .nav a:not(.action):not(.wordmark) {
+    display: none;
+  }
+}
+
+/* Privacy, terms, support */
+
+/* These pages have no bands, so their one section is the container. */
+.legal > section {
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
+  border-top: 0;
+  padding-inline: var(--gutter);
+  padding-block: clamp(48px, 7vw, 88px) clamp(56px, 8vw, 96px);
 }
 
 .legal h1 {
-  font-size: clamp(2.25rem, 6vw, 3.5rem);
-  line-height: 1.02;
+  max-width: none;
+  font-size: clamp(2.25rem, 5.5vw, 3.25rem);
+  line-height: 1.04;
 }
 
 .legal h2 {
   margin: 48px 0 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.375rem;
-  font-weight: 500;
+  font-size: 1.3125rem;
   letter-spacing: -0.02em;
 }
 
 .legal p {
   max-width: 62ch;
   margin: 16px 0 0;
-  color: #55594f;
+  color: var(--muted);
   font-size: 1.0625rem;
   line-height: 1.65;
 }
 
-.legal code {
-  font-size: 0.9375em;
-}
-
 .legal .updated {
-  margin: 16px 0 40px;
+  margin: 14px 0 40px;
   font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
 
 .legal .back {
-  margin-top: 64px;
-}
-
-a {
-  color: inherit;
-  text-underline-offset: 0.2em;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    background: #181a17;
-    color: #f3f0e7;
-  }
-
-  .eyebrow,
-  .compare figcaption {
-    color: #d6a36d;
-  }
-
-  .description,
-  .legal p,
-  .lede,
-  .compare pre,
-  .hosts p,
-  .note,
-  .colophon {
-    color: #b9bcb2;
-  }
-
-  .verified {
-    color: #8fbf8f !important;
-  }
-
-  .untested {
-    color: #d6b87a !important;
-  }
-
-  .action {
-    background: #f3f0e7;
-    color: #181a17;
-  }
+  margin-top: 56px;
 }

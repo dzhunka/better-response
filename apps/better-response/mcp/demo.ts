@@ -1,3 +1,4 @@
+import { applyDocumentTheme } from "@modelcontextprotocol/ext-apps";
 import { render, type Tree } from "@better-response/engawa";
 import { createElement } from "react";
 import { createRoot } from "react-dom/client";
@@ -11,7 +12,49 @@ if (!root) {
   throw new Error("Missing demo root");
 }
 
-const tree: Tree<typeof components> = {
+const checklist: Tree<typeof components> = {
+  type: "Stack",
+  props: { gap: "md", padding: "md" },
+  children: [
+    { type: "Text", props: { variant: "heading", text: "Pasta night" } },
+    {
+      type: "Stack",
+      props: { gap: "sm" },
+      children: [
+        {
+          type: "Label",
+          props: { text: "400 g spaghetti" },
+          children: [{ type: "Checkbox", props: { defaultChecked: true } }],
+        },
+        {
+          type: "Label",
+          props: { text: "200 g guanciale" },
+          children: [{ type: "Checkbox" }],
+        },
+        {
+          type: "Label",
+          props: { text: "4 eggs" },
+          children: [{ type: "Checkbox" }],
+        },
+        {
+          type: "Label",
+          props: { text: "A wedge of pecorino romano" },
+          children: [{ type: "Checkbox" }],
+        },
+      ],
+    },
+    { type: "Separator" },
+    {
+      type: "Text",
+      props: {
+        variant: "caption",
+        text: "Enough for four. The guanciale is the one worth a detour.",
+      },
+    },
+  ],
+};
+
+const comparison: Tree<typeof components> = {
   type: "Stack",
   props: { gap: "md", padding: "md" },
   children: [
@@ -26,13 +69,13 @@ const tree: Tree<typeof components> = {
           { key: "build", label: "Build" },
           {
             key: "price",
-            label: "2026 price",
+            label: "Price",
             type: "number",
             format: { style: "currency", currency: "EUR", maximumFractionDigits: 0 },
           },
           {
             key: "weight",
-            label: "Weight (kg)",
+            label: "kg",
             type: "number",
             format: { minimumFractionDigits: 1 },
           },
@@ -42,7 +85,7 @@ const tree: Tree<typeof components> = {
             type: "date",
             format: { month: "short", year: "numeric" },
           },
-          { key: "worth", label: "Worth the jump" },
+          { key: "worth", label: "Worth it" },
         ],
         data: [
           {
@@ -79,6 +122,19 @@ const tree: Tree<typeof components> = {
     },
   ],
 };
+
+// The real app takes its theme from the host. On the website the visitor's own
+// preference is the closest equivalent, applied through the same helper.
+const dark = matchMedia("(prefers-color-scheme: dark)");
+const followPreference = () => applyDocumentTheme(dark.matches ? "dark" : "light");
+
+dark.addEventListener("change", followPreference);
+followPreference();
+
+const tree =
+  new URLSearchParams(location.search).get("view") === "checklist"
+    ? checklist
+    : comparison;
 
 createRoot(root).render(
   createElement("div", { className: "engawa-root" }, render(tree, components)),
