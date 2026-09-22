@@ -250,31 +250,6 @@ h3 {
   margin-top: 36px;
 }
 
-/* The chat frame. Square, except for the one cut lifted from the mark. */
-
-.frame {
-  margin-top: clamp(40px, 6vw, 72px);
-  padding-bottom: 20px;
-  border: 1px solid var(--hairline);
-  border-radius: 0 0 var(--cut) 0;
-  background: var(--surface);
-  overflow: hidden;
-}
-
-.frame header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 11px 16px;
-  border-bottom: 1px solid var(--hairline);
-  color: var(--muted);
-  font-size: 0.8125rem;
-}
-
-.frame header .spacer {
-  flex: 1;
-}
-
 /* --signal is a light hue, so a small mark of it needs the ring to stay
    legible against --paper. */
 .dot {
@@ -285,56 +260,314 @@ h3 {
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink) 30%, transparent);
 }
 
-/* A host renders a conversation as a centred column inside a wide window, so
-   the turns and the render it produced share one measure. */
-.turns,
-.frame iframe {
-  margin-inline: auto;
-}
-
-/* 744 less the 16px inset leaves a 712px column, so the turns and the render
-   below them share one left edge. */
-.turns {
-  max-width: 744px;
-  padding: 22px 16px 0;
-}
-
-.frame iframe {
-  max-width: 712px;
-}
-
-.said {
-  max-width: 40ch;
-  margin: 0 0 16px auto;
-  padding: 9px 14px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--ink) 7%, transparent);
+.caption {
+  max-width: 62ch;
+  margin: 20px 0 0;
+  color: var(--muted);
   font-size: 0.875rem;
 }
 
-.replied {
-  max-width: 48ch;
-  margin: 0 0 16px;
-  font-size: 0.9375rem;
+/* The chat mock.
+ *
+ * The point of this block is recognition, so every value in it was measured
+ * from a running chat client in both color schemes rather than derived from
+ * the identity above. The page's two rules stop at the frame: nothing inside
+ * carries --signal, and the interior radii are the client's own 22px bubble,
+ * 28px composer, 16px app card, and 10px sidebar row. Only the outer frame
+ * is ours, and it takes the same cut every other panel on the page takes.
+ */
+
+.chat {
+  --canvas: #fcfcfc;
+  --chat-ink: #0d0d0d;
+  --chat-dim: #5d5d5d;
+  --bubble: #e8e8e8;
+  --composer: #ffffff;
+  --chat-line: rgba(0, 0, 0, 0.1);
+  --chat-edge: rgba(0, 0, 0, 0.2);
+  --chat-raise: rgba(0, 0, 0, 0.05);
+  --composer-lift: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.04),
+    0 4px 80px 8px rgba(0, 0, 0, 0.024);
+  --thread: 640px;
+
+  background: var(--canvas);
+  color: var(--chat-ink);
+  font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", "Helvetica",
+    "Arial", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
-.frame iframe,
-.compare iframe,
-.compare pre {
-  display: block;
+@media (prefers-color-scheme: dark) {
+  .chat {
+    --canvas: #000000;
+    --chat-ink: #ffffff;
+    --chat-dim: #cdcdcd;
+    --bubble: #414141;
+    --composer: #212121;
+    --chat-line: rgba(255, 255, 255, 0.12);
+    --chat-edge: rgba(255, 255, 255, 0.2);
+    --chat-raise: rgba(255, 255, 255, 0.08);
+    --composer-lift: inset 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+}
+
+.chat svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chat svg.solid {
+  fill: currentColor;
+  stroke: none;
+}
+
+/* A client keeps the composer at the bottom of a tall window with the thread
+   growing above it, so the window needs a height of its own to read as one. */
+.window {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  min-height: clamp(460px, 54vw, 620px);
+  margin-top: clamp(40px, 6vw, 72px);
+  border: 1px solid var(--hairline);
+  border-radius: 0 0 var(--cut) 0;
+  overflow: hidden;
+}
+
+/* Sidebar */
+
+.rail {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 8px;
+  border-right: 1px solid var(--chat-line);
+  font-size: 0.875rem;
+  line-height: 1.43;
+}
+
+.rail .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 36px;
+  padding-inline: 6px;
+  margin-bottom: 10px;
+}
+
+.rail .row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 36px;
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+
+.rail .row.on {
+  background: var(--chat-raise);
+}
+
+.rail .label {
+  padding: 20px 10px 4px;
+  color: var(--chat-dim);
+  font-size: 0.75rem;
+}
+
+.rail .past {
+  height: 36px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Thread */
+
+.pane {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.bar {
+  padding: 8px 12px;
+}
+
+.picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 36px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.picker svg {
+  width: 16px;
+  height: 16px;
+  color: var(--chat-dim);
+}
+
+.thread {
+  flex: 1;
+  margin: 0;
+  padding: 4px 0 16px;
+  list-style: none;
+}
+
+.thread > li {
   width: 100%;
-  border: 0;
-  border-top: 1px solid var(--hairline);
-  background: var(--paper);
+  max-width: var(--thread);
+  min-width: 0;
+  margin-inline: auto;
+  padding-inline: 16px;
 }
 
-.compare iframe,
-.compare pre {
+.thread > li + li {
+  margin-top: 26px;
+}
+
+.thread p {
   margin: 0;
 }
 
-.frame iframe {
-  height: 240px;
+.thread > li > * + * {
+  margin-top: 16px;
+}
+
+.said {
+  width: fit-content;
+  max-width: 70%;
+  margin-left: auto;
+  padding: 10px 16px;
+  border-radius: 22px;
+  background: var(--bubble);
+}
+
+/* The client credits the app that drew the panel, so ours is named where a
+   host would name it rather than in a caption of our own. */
+.app {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--chat-dim);
+  font-size: 0.8125rem;
+}
+
+.app svg {
+  width: 15px;
+  height: 15px;
+}
+
+.card {
+  border: 1px solid var(--chat-line);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* The card sets its own height from the render once it has one. This is only
+   what it occupies until then. */
+.card iframe {
+  display: block;
+  width: 100%;
+  height: 237px;
+  border: 0;
+}
+
+/* A client renders a Markdown table as a table, so this is what the flat
+   answer actually looks like in the same window. */
+
+.rendered {
+  border: 1px solid var(--chat-line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.chat table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.chat th,
+.chat td {
+  padding: 8px 12px;
+  border: 1px solid var(--chat-line);
+  vertical-align: top;
+}
+
+.chat th {
+  background: var(--chat-raise);
+  font-weight: 600;
+}
+
+/* Only the prose column wraps, so the flat answer is the tidiest a client
+   could render it. The comparison has to be with that, not with a worse one. */
+.chat th,
+.chat td:not(:last-child) {
+  white-space: nowrap;
+}
+
+/* The wrapper already draws the outer edge. */
+.chat tr > :first-child {
+  border-left: 0;
+}
+
+.chat tr > :last-child {
+  border-right: 0;
+}
+
+.chat thead th {
+  border-top: 0;
+}
+
+.chat tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Composer */
+
+.composer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto 20px;
+  padding: 7px 10px;
+  border: 1px solid var(--chat-edge);
+  border-radius: 28px;
+  background: var(--composer);
+  box-shadow: var(--composer-lift);
+}
+
+.composer .ask {
+  flex: 1;
+  padding-inline: 4px;
+  color: var(--chat-dim);
+}
+
+.composer .round {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+}
+
+.composer .send {
+  background: var(--bubble);
+  color: var(--chat-dim);
 }
 
 /* The same answer, twice */
@@ -371,19 +604,13 @@ h3 {
   font-size: 0.8125rem;
 }
 
-.compare pre,
-.compare iframe {
-  height: 320px;
+/* Both panels are the same window, so the caption is the only thing that
+   differs above the fold of each one. */
+.compare .bare {
+  flex: 1;
+  border-top: 1px solid var(--hairline);
 }
 
-.compare pre {
-  padding: 18px 16px;
-  overflow: auto;
-  color: var(--muted);
-  font-size: 0.6875rem;
-  line-height: 1.8;
-  white-space: pre;
-}
 
 /* Install */
 
@@ -482,6 +709,18 @@ footer .inner {
 
   .hosts {
     gap: 48px 64px;
+  }
+}
+
+/* The client collapses its own sidebar once the thread would be squeezed, so
+   the mock does too. */
+@media (max-width: 720px) {
+  .window {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rail {
+    display: none;
   }
 }
 
