@@ -10,12 +10,10 @@ import { useEffect, useRef, useState } from "react";
 export function DemoCard({
   src,
   title,
-  lazy,
   inactive,
 }: {
   src: string;
   title: string;
-  lazy?: boolean;
   inactive?: boolean;
 }) {
   const frame = useRef<HTMLIFrameElement>(null);
@@ -65,7 +63,6 @@ export function DemoCard({
         ref={frame}
         src={src}
         title={title}
-        loading={lazy ? "lazy" : undefined}
         style={height ? { height } : undefined}
       />
     </div>

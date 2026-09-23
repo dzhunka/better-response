@@ -1,33 +1,11 @@
 import { ChatWindow } from "./chat-window";
 import { CopyAddress } from "./copy-address";
-import { DemoCard } from "./demo-card";
 import { Mark } from "./mark";
 import "./styles.css";
 
 const MCP_URL = "https://betterresponse.vercel.app/api/mcp";
 const CURSOR_DEEPLINK =
   "cursor://anysphere.cursor-deeplink/mcp/install?name=visualize&config=eyJ0eXBlIjoiaHR0cCIsInVybCI6Imh0dHBzOi8vYmV0dGVycmVzcG9uc2UudmVyY2VsLmFwcC9hcGkvbWNwIn0=";
-
-const BUILDS = [
-  {
-    build: "Attain SLX",
-    price: "EUR 1,399",
-    weight: "9.6",
-    worth: "Yes, if you want the lighter build",
-  },
-  {
-    build: "Attain Pro",
-    price: "EUR 1,099",
-    weight: "10.1",
-    worth: "Reasonable middle option",
-  },
-  {
-    build: "Attain Race",
-    price: "EUR 899",
-    weight: "10.7",
-    worth: "Only on a tight budget",
-  },
-];
 
 export default function Home() {
   return (
@@ -74,76 +52,108 @@ export default function Home() {
 
       <section className="band">
         <div className="inner">
-          <h2>The same answer, twice.</h2>
-          <p className="lede">
-            Your agent did the same work either way. The only thing that changes
-            is what lands in the conversation. Both answers hold the same three
-            bike builds: one you read, one you use.
-          </p>
+          <h2>Three steps, and you never leave the chat.</h2>
 
-          <div className="compare">
-            <figure>
-              <figcaption>What it would have sent</figcaption>
-              <div className="chat bare">
-                <ol className="thread">
-                  <li>
-                    <p className="said">compare the 2026 Attain builds</p>
-                  </li>
-                  <li>
-                    <p>Here’s how the three builds compare:</p>
-                    <div className="rendered">
-                      <table>
-                        <thead>
-                          <tr>
-                            <th>Build</th>
-                            <th>Price</th>
-                            <th>kg</th>
-                            <th>Worth it</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {BUILDS.map((row) => (
-                            <tr key={row.build}>
-                              <td>{row.build}</td>
-                              <td>{row.price}</td>
-                              <td>{row.weight}</td>
-                              <td>{row.worth}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                    <p>
-                      Prices are manufacturer recommended and availability varies
-                      by region.
-                    </p>
-                  </li>
-                </ol>
+          <ol className="steps">
+            <li>
+              <div className="chat tile" aria-hidden="true">
+                <div className="menu">
+                  <span className="on">
+                    <Mark className="solid" />
+                    Better Response
+                    <span className="state">Connected</span>
+                  </span>
+                  <span>
+                    <svg viewBox="0 0 20 20">
+                      <circle cx="10" cy="10" r="7" />
+                      <path d="M3 10h14M10 3c2 2.2 2.8 4.6 2.8 7s-.8 4.8-2.8 7c-2-2.2-2.8-4.6-2.8-7S8 5.2 10 3z" />
+                    </svg>
+                    Web search
+                  </span>
+                </div>
+                <div className="composer">
+                  <span className="round">
+                    <svg viewBox="0 0 20 20">
+                      <path d="M10 4.5v11M4.5 10h11" />
+                    </svg>
+                  </span>
+                  <span className="ask">Ask anything</span>
+                </div>
               </div>
-            </figure>
+              <h3>Add it to your agent</h3>
+              <p>
+                Point your agent at one address. There is no account and no key,
+                and it sits beside the tools your agent already has.
+              </p>
+            </li>
 
-            <figure className="structured">
-              <figcaption>What it sends instead</figcaption>
-              <div className="chat bare">
-                <ol className="thread">
-                  <li>
-                    <p className="said">compare the 2026 Attain builds</p>
-                  </li>
-                  <li>
-                    <p className="app">
-                      <Mark className="solid" />
-                      <span className="shimmer">Better Response</span>
-                    </p>
-                    <DemoCard
-                      src="/demo"
-                      title="A comparison rendered by Better Response"
-                      lazy
-                    />
-                  </li>
-                </ol>
+            <li>
+              <div className="chat tile" aria-hidden="true">
+                <span className="prior">
+                  Here’s how the three builds compare: | Build | Price | kg | Worth it |
+                </span>
+                <div className="menu">
+                  <span className="on">
+                    <Mark className="solid" />
+                    Visualize
+                    <span className="state">Better Response</span>
+                  </span>
+                </div>
+                <div className="composer">
+                  <span className="round">
+                    <svg viewBox="0 0 20 20">
+                      <path d="M10 4.5v11M4.5 10h11" />
+                    </svg>
+                  </span>
+                  <span className="ask typed">/visualize</span>
+                  <span className="round send">
+                    <svg viewBox="0 0 20 20">
+                      <path d="M10 15.5V5M5.5 9.5L10 5l4.5 4.5" />
+                    </svg>
+                  </span>
+                </div>
               </div>
-            </figure>
-          </div>
+              <h3>Call it on an answer</h3>
+              <p>
+                When a reply would be easier to use than to read, call Better
+                Response on it: <code className="mono">/visualize</code> in
+                Cursor, the <code className="mono">$</code> picker in Codex, or{" "}
+                <code className="mono">@</code> where your client uses mentions.
+              </p>
+            </li>
+
+            <li>
+              <div className="chat tile" aria-hidden="true">
+                <span className="app">
+                  <Mark className="solid" />
+                  Better Response
+                </span>
+                <div className="sketch">
+                  <strong>Pasta night</strong>
+                  <span>
+                    <span className="box on">
+                      <svg viewBox="0 0 20 20">
+                        <path d="M5 10.5l3.5 3.5L15 7" />
+                      </svg>
+                    </span>
+                    400 g spaghetti
+                  </span>
+                  <span>
+                    <span className="box" />
+                    200 g guanciale
+                  </span>
+                  <span>
+                    <span className="box" />4 eggs
+                  </span>
+                </div>
+              </div>
+              <h3>Use what it builds</h3>
+              <p>
+                Your agent turns what the conversation already holds into an
+                interface, and it lands right in the thread.
+              </p>
+            </li>
+          </ol>
         </div>
       </section>
 

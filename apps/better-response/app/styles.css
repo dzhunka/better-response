@@ -590,63 +590,6 @@ h3 {
   border: 0;
 }
 
-/* A client renders a Markdown table as a table, so this is what the flat
-   answer actually looks like in the same window. */
-
-.rendered {
-  border: 1px solid var(--chat-line);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-/* The flat answer is the thing under comparison, not furniture around it, so it
-   keeps the client's full ink. Letting it recede with everything else would win
-   the comparison by handicapping the other side. */
-.chat table {
-  width: 100%;
-  color: var(--chat-ink);
-  border-collapse: collapse;
-  font-size: 0.875rem;
-  line-height: 1.4;
-  text-align: left;
-}
-
-.chat th,
-.chat td {
-  padding: 8px 12px;
-  border: 1px solid var(--chat-line);
-  vertical-align: top;
-}
-
-.chat th {
-  background: var(--chat-raise);
-  font-weight: 600;
-}
-
-/* Only the prose column wraps, so the flat answer is the tidiest a client
-   could render it. The comparison has to be with that, not with a worse one. */
-.chat th,
-.chat td:not(:last-child) {
-  white-space: nowrap;
-}
-
-/* The wrapper already draws the outer edge. */
-.chat tr > :first-child {
-  border-left: 0;
-}
-
-.chat tr > :last-child {
-  border-right: 0;
-}
-
-.chat thead th {
-  border-top: 0;
-}
-
-.chat tr:last-child td {
-  border-bottom: 0;
-}
-
 /* Composer */
 
 /* The composer is wider than the thread but never reaches the pane edges: it
@@ -683,47 +626,158 @@ h3 {
   color: var(--chat-dim);
 }
 
-/* The same answer, twice */
 
 .band .inner {
   padding-block: clamp(56px, 8vw, 104px);
 }
 
-.compare {
+/* How it works */
+
+.steps {
   display: grid;
-  gap: 28px;
-  margin-top: clamp(32px, 4vw, 48px);
-  grid-template-columns: 1fr;
+  gap: 44px;
+  margin: clamp(36px, 4vw, 56px) 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
 }
 
-.compare figure {
+.steps > li {
+  min-width: 0;
+}
+
+.steps h3 {
+  margin-top: 22px;
+}
+
+.steps h3::before {
+  counter-increment: step;
+  content: counter(step) ". ";
+  color: var(--muted);
+}
+
+.steps li > p {
+  max-width: 38ch;
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+/* Each tile draws a small part of the client, so like the window it carries
+   the client's tokens and radii inside; only the tile's own edge is ours. */
+.tile {
   display: flex;
   flex-direction: column;
-  min-width: 0;
-  margin: 0;
+  justify-content: center;
+  gap: 10px;
+  height: 224px;
+  padding: 24px;
   border: 1px solid var(--hairline);
-  background: var(--surface);
-}
-
-/* Only the structured panel gets the cut. Flat text stays a flat rectangle. */
-.compare .structured {
-  border-radius: 0 0 var(--cut) 0;
+  font-size: 0.875rem;
   overflow: hidden;
 }
 
-.compare figcaption {
-  padding: 11px 16px;
-  color: var(--muted);
+.tile .composer {
+  max-width: none;
+  margin: 0;
+  padding: 5px 6px;
+}
+
+.tile .round {
+  width: 30px;
+  height: 30px;
+}
+
+.tile .typed {
+  color: var(--chat-text);
+}
+
+.tile .prior {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--chat-furniture);
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px;
+  border: 1px solid var(--chat-line);
+  border-radius: 16px;
+  background: var(--composer);
+  box-shadow: var(--composer-lift);
+}
+
+.menu > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding-inline: 10px;
+  border-radius: 10px;
+  color: var(--chat-furniture);
+}
+
+.menu > .on {
+  background: var(--chat-raise);
+  color: var(--chat-text);
+}
+
+.menu .state {
+  margin-left: auto;
+  color: var(--chat-dim);
   font-size: 0.8125rem;
 }
 
-/* Both panels are the same window, so the caption is the only thing that
-   differs above the fold of each one. */
-.compare .bare {
-  flex: 1;
-  border-top: 1px solid var(--hairline);
+.menu svg {
+  width: 16px;
+  height: 16px;
 }
 
+.sketch {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 14px 16px;
+  border: 1px solid var(--chat-line);
+  border-radius: 16px;
+  background: var(--composer);
+  color: var(--chat-text);
+}
+
+.sketch strong {
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+.sketch > span {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.box {
+  display: grid;
+  place-items: center;
+  width: 15px;
+  height: 15px;
+  border: 1px solid var(--chat-edge);
+  border-radius: 4px;
+}
+
+.box.on {
+  border-color: var(--chat-ink);
+  background: var(--chat-ink);
+  color: var(--canvas);
+}
+
+.chat .box svg {
+  width: 11px;
+  height: 11px;
+  stroke-width: 2.5;
+}
 
 /* Install */
 
@@ -815,7 +869,11 @@ footer .inner {
 }
 
 @media (min-width: 900px) {
-  .compare,
+  .steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+  }
+
   .hosts {
     grid-template-columns: 1fr 1fr;
   }
