@@ -290,8 +290,18 @@ h3 {
     0 4px 80px 8px rgba(0, 0, 0, 0.024);
   --thread: 640px;
 
+  /* The one place the mock leaves measured fidelity on purpose. The client's
+     own ink out-contrasts the render it is framing — the substrate draws text
+     at #252525 and #fafafa, never at #0d0d0d or pure white — so the panel was
+     the weakest thing in its own window. The conversation now sits at roughly
+     the strength the render uses, and the furniture around it well under that,
+     which leaves the panel as the strongest thing on screen. Both stay above
+     4.5:1 on their own surfaces. */
+  --chat-text: color-mix(in srgb, var(--chat-ink) 88%, var(--canvas));
+  --chat-furniture: color-mix(in srgb, var(--chat-ink) 60%, var(--canvas));
+
   background: var(--canvas);
-  color: var(--chat-ink);
+  color: var(--chat-text);
   font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", "Helvetica",
     "Arial", sans-serif;
   font-size: 1rem;
@@ -342,6 +352,13 @@ h3 {
 
 /* Sidebar */
 
+/* Everything the client draws around the answer. */
+.rail,
+.bar,
+.composer {
+  color: var(--chat-furniture);
+}
+
 .rail {
   display: flex;
   flex-direction: column;
@@ -371,7 +388,6 @@ h3 {
 
 .rail .label {
   padding: 20px 10px 4px;
-  color: var(--chat-dim);
   font-size: 0.75rem;
 }
 
@@ -428,7 +444,6 @@ h3 {
 .picker svg {
   width: 16px;
   height: 16px;
-  color: var(--chat-dim);
 }
 
 .thread {
@@ -528,8 +543,12 @@ h3 {
   overflow: hidden;
 }
 
+/* The flat answer is the thing under comparison, not furniture around it, so it
+   keeps the client's full ink. Letting it recede with everything else would win
+   the comparison by handicapping the other side. */
 .chat table {
   width: 100%;
+  color: var(--chat-ink);
   border-collapse: collapse;
   font-size: 0.875rem;
   line-height: 1.4;
@@ -593,7 +612,6 @@ h3 {
 .composer .ask {
   flex: 1;
   padding-inline: 4px;
-  color: var(--chat-dim);
 }
 
 .composer .round {
