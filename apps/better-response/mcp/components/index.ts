@@ -1,4 +1,5 @@
 export { Button } from "@better-response/common/components/button";
+export { Card } from "@better-response/common/components/card";
 export { Checkbox } from "@better-response/common/components/checkbox";
 export { DataGrid } from "@better-response/common/components/data-grid";
 export { Grid } from "@better-response/sdk/grid";

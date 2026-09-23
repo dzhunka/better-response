@@ -45,7 +45,11 @@ const componentContract = Object.entries(componentMetadata)
       );
       const values = [
         ...(metadata.enum?.map((value) => JSON.stringify(value)) ?? []),
-        ...kinds.filter((kind) => !enumeratedKinds.has(kind as never)),
+        ...kinds
+          .filter((kind) => !enumeratedKinds.has(kind as never))
+          .map((kind) =>
+            kind === "node" ? "string | Node | Array<string | Node>" : kind,
+          ),
         ...(metadata.nullable ? ["null"] : []),
       ];
 

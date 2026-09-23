@@ -127,6 +127,22 @@ module.exports = function engawaMetadataLoader() {
         (part) =>
           (part.flags & (ts.TypeFlags.Null | ts.TypeFlags.Undefined)) === 0,
       );
+
+      // A prop that accepts a React element is a slot: the renderer hydrates
+      // serialized nodes into it, like children. ReactNode's own null is not
+      // an agent-facing value, since absent props are omitted.
+      if (
+        valueParts.some((part) => part.getSymbol()?.getName() === "ReactElement")
+      ) {
+        props[property.name] = {
+          description: propertyDescription,
+          nullable: false,
+          optional,
+          type: "node",
+        };
+        continue;
+      }
+
       const literals = literalEnum(valueParts);
       if (literals) {
         props[property.name] = {

@@ -197,6 +197,38 @@ const ratingGrid: Tree<typeof components> = {
   },
 };
 
+const slottedCards: Tree<typeof components> = {
+  type: "Grid",
+  props: { columns: 2, gap: "md" },
+  children: [
+    {
+      type: "Card",
+      props: {
+        media: { type: "Rating", props: { value: 4.5 } },
+        title: "Harbor House",
+        description: ["2 nights · ", { type: "Rating", props: { value: 4.5 } }],
+        action: { type: "Text", props: { variant: "label", text: "€240" } },
+        footer: [
+          { type: "Button", props: { text: "Details", variant: "outline", size: "sm" } },
+          { type: "Button", props: { text: "Reserve", size: "sm" } },
+        ],
+      },
+      children: [
+        { type: "Text", props: { text: "Sea view, breakfast included, free cancellation until Friday." } },
+      ],
+    },
+    {
+      type: "Card",
+      props: {
+        title: "Old Town Loft",
+        description: "Unregistered media degrades to nothing",
+        media: { type: "Image", props: { src: "https://example.com/x.png" } },
+      },
+      children: [{ type: "Text", props: { text: "Body only, no footer." } }],
+    },
+  ],
+};
+
 function section(title: string, tree: Tree<typeof components>) {
   return createElement(
     "section",
@@ -215,5 +247,6 @@ createRoot(root).render(
     section("Comparison with flex + Separator", comparison),
     section("Rating scale", ratingScale),
     section("DataGrid with slotted Rating cells", ratingGrid),
+    section("Card slots", slottedCards),
   ),
 );

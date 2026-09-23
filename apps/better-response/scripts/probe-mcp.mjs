@@ -319,9 +319,26 @@ function propValueAcceptsType(schema, type) {
       type: "div",
       children: ["Native HTML is not a public node."],
     });
-    const rejectsCard = await rejects(client, {
+    const slottedCard = await client.callTool({
+      name: "visualize",
+      arguments: {
+        type: "Card",
+        props: {
+          title: "Harbor House",
+          description: ["2 nights · ", { type: "Rating", props: { value: 4.5 } }],
+          action: { type: "Text", props: { variant: "caption", text: "€240" } },
+          footer: [
+            { type: "Button", props: { text: "Details", variant: "outline" } },
+          ],
+        },
+        children: [{ type: "Text", props: { text: "Sea view, breakfast included." } }],
+      },
+    });
+    const rejectsUnsafeSlotNode = await rejects(client, {
       type: "Card",
-      children: ["Card belongs in common ui, not the agent SDK."],
+      props: {
+        title: { type: "Text", props: { text: "Unsafe", onClick: "alert(1)" } },
+      },
     });
     const rejectsBadge = await rejects(client, {
       type: "Badge",
@@ -409,6 +426,7 @@ function propValueAcceptsType(schema, type) {
       comparison.structuredContent?.schema?.children?.[0]?.children?.[0]?.props?.text;
     const expectedTypes = [
       "Button",
+      "Card",
       "Checkbox",
       "DataGrid",
       "Grid",
@@ -467,6 +485,12 @@ function propValueAcceptsType(schema, type) {
         tool.description.includes(
           "DataGrid — Tabular data from row objects. Typed columns are formatted and aligned; untyped columns render as text.\n",
         ) &&
+        tool.description.includes(
+          "props.title?: string | Node | Array<string | Node> — Header heading in emphasized text.\n",
+        ) &&
+        tool.description.includes(
+          "props.media?: string | Node | Array<string | Node> — Rendered first, spanning the card's full width with no inner padding.\n",
+        ) &&
         tool.description.includes("props.data?: array") &&
         tool.description.includes("props.columns?: array") &&
         tool.description.includes(
@@ -475,7 +499,6 @@ function propValueAcceptsType(schema, type) {
       nodeTypes: Array.isArray(nodeTypes),
       noArticleType: !nodeTypes?.includes("article"),
       noDivType: !nodeTypes?.includes("div"),
-      noCardType: !nodeTypes?.includes("Card"),
       noBadgeType: !nodeTypes?.includes("Badge"),
       noImageType: !nodeTypes?.includes("Image"),
       expectedSdkTypes: expectedTypes.every(
@@ -501,6 +524,12 @@ function propValueAcceptsType(schema, type) {
           ?.children?.type === "Rating" &&
         slottedGrid.structuredContent.schema.props.data[0].performance.value ===
           3,
+      cardSlots:
+        slottedCard.structuredContent?.schema?.props?.description?.[1]?.type ===
+          "Rating" &&
+        slottedCard.structuredContent.schema.props.action?.type === "Text" &&
+        slottedCard.structuredContent.schema.props.footer?.[0]?.type === "Button",
+      rejectsUnsafeSlotNode,
       rejectsUnsafeEmbeddedNode,
       rejectsEmbeddedDangerousHtml,
       acceptsNodeLikeData,
@@ -542,7 +571,6 @@ function propValueAcceptsType(schema, type) {
       acceptsSubheading,
       acceptsUnknownGap,
       rejectsUnknownType,
-      rejectsCard,
       rejectsBadge,
       acceptsUnknownComponentProp,
       rejectsEventHandler,
@@ -584,6 +612,10 @@ function propValueAcceptsType(schema, type) {
       bundledGrid: typeof html === "string" && html.includes('data-slot":"grid"'),
       bundledTable: typeof html === "string" && html.includes('data-slot":"table"'),
       bundledRating: typeof html === "string" && html.includes('data-slot":"rating"'),
+      bundledCard:
+        typeof html === "string" &&
+        html.includes('data-slot":"card"') &&
+        html.includes('data-slot":"card-media"'),
       bundledTheme:
         typeof html === "string" &&
         html.includes("--color-background-primary") &&

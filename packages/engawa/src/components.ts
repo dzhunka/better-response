@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 export type ComponentPropKind =
   | "array"
   | "boolean"
+  | "node"
   | "number"
   | "object"
   | "string";
