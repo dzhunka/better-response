@@ -299,6 +299,7 @@ h3 {
      4.5:1 on their own surfaces. */
   --chat-text: color-mix(in srgb, var(--chat-ink) 88%, var(--canvas));
   --chat-furniture: color-mix(in srgb, var(--chat-ink) 60%, var(--canvas));
+  --chat-shimmer: #cdcdcd;
 
   background: var(--canvas);
   color: var(--chat-text);
@@ -319,6 +320,7 @@ h3 {
     --chat-edge: rgba(255, 255, 255, 0.2);
     --chat-raise: rgba(255, 255, 255, 0.08);
     --composer-lift: inset 0 0 1px rgba(255, 255, 255, 0.2);
+    --chat-shimmer: #ededed;
   }
 }
 
@@ -392,7 +394,13 @@ h3 {
 }
 
 /* The two conversations are the one live control in the mock, so they are real
-   buttons stripped back to the row they sit in. */
+   buttons stripped back to the row they sit in.
+ *
+ * They also carry the conversation's own strength rather than the furniture's,
+ * so the eye is offered them first and not the inert rows above. Raising these
+ * is the only lever available: dropping the inert rows further would put light
+ * mode under 4.5:1, which they already sit close to. Full ink is deliberately
+ * not used, because it would make the sidebar brighter than the panel. */
 .rail .past {
   display: block;
   width: 100%;
@@ -401,7 +409,7 @@ h3 {
   border: 0;
   border-radius: 10px;
   background: none;
-  color: inherit;
+  color: var(--chat-text);
   font: inherit;
   text-align: left;
   overflow: hidden;
@@ -410,9 +418,14 @@ h3 {
   cursor: pointer;
 }
 
-.rail .past:hover,
-.rail .past.on {
+.rail .past:hover {
   background: var(--chat-raise);
+}
+
+/* Filled, which is how a client shows the conversation you are in — and it
+   tells the visitor its sibling is the same kind of thing. */
+.rail .past.on {
+  background: color-mix(in srgb, var(--chat-ink) 10%, transparent);
 }
 
 .chat :focus-visible {
@@ -495,6 +508,49 @@ h3 {
 .app svg {
   width: 15px;
   height: 15px;
+}
+
+/* This client shimmers a tool's label while that tool works, so the one moving
+   thing in the window is its own idiom rather than an effect borrowed from
+   marketing — and sitting directly above the card, it leads the eye into the
+   panel instead of away into the furniture. Values are the design language's
+   own ShimmerText: a lighter band crossing the label, with a rest between
+   passes so it reads as live rather than as a spinner. */
+.shimmer {
+  display: inline-block;
+  background: currentColor
+    linear-gradient(
+      to left,
+      currentColor,
+      var(--chat-shimmer) 50%,
+      currentColor
+    );
+  background-clip: text;
+  background-position: -100% top;
+  background-repeat: no-repeat;
+  background-size: 50% 200%;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s 0.6s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% top;
+  }
+
+  70%,
+  100% {
+    background-position: 250% top;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer {
+    background: none;
+    background-clip: unset;
+    -webkit-text-fill-color: unset;
+    animation: none;
+  }
 }
 
 .card {

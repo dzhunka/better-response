@@ -132,7 +132,7 @@ export default function Home() {
                   <li>
                     <p className="app">
                       <Mark className="solid" />
-                      Better Response
+                      <span className="shimmer">Better Response</span>
                     </p>
                     <DemoCard
                       src="/demo"

@@ -87,7 +87,7 @@ export function ChatWindow() {
             <p>{open.replied}</p>
             <p className="app">
               <Mark className="solid" />
-              Better Response
+              <span className="shimmer">Better Response</span>
             </p>
             <div className="cards">
               {CONVERSATIONS.map((one) => (
