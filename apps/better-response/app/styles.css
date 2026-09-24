@@ -736,6 +736,11 @@ h3 {
   height: 16px;
 }
 
+.menu .skill .state {
+  margin-left: 0;
+  font-size: inherit;
+}
+
 .sketch {
   display: flex;
   flex-direction: column;

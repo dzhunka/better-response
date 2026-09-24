@@ -95,8 +95,9 @@ export default function Home() {
                 <div className="menu">
                   <span className="on">
                     <Mark className="solid" />
-                    Visualize
-                    <span className="state">Better Response</span>
+                    <span className="skill">
+                      <span className="state">Better Response:</span> Visualize
+                    </span>
                   </span>
                 </div>
                 <div className="composer">
@@ -113,12 +114,13 @@ export default function Home() {
                   </span>
                 </div>
               </div>
-              <h3>Call it on an answer</h3>
+              <h3>
+                Type <code className="mono">/visualize</code>
+              </h3>
               <p>
-                When a reply would be easier to use than to read, call Better
-                Response on it: <code className="mono">/visualize</code> in
-                Cursor, the <code className="mono">$</code> picker in Codex, or{" "}
-                <code className="mono">@</code> where your client uses mentions.
+                After your agent answers, type{" "}
+                <code className="mono">/visualize</code> and pick Better
+                Response: Visualize.
               </p>
             </li>
 
