@@ -207,14 +207,20 @@ h3 {
   transform: translateY(0);
 }
 
+/* The secondary action is still an action, so it keeps the signal: ringed and
+   tinted with it rather than filled, and filled on hover. The label stays ink,
+   since --signal is never text on paper. The ring is drawn inside the 1px
+   border so both variants keep one size and sit level beside each other. */
 .action.outline {
-  background: transparent;
-  border-color: var(--hairline);
+  border-color: var(--signal);
+  background: color-mix(in srgb, var(--signal) 18%, transparent);
+  box-shadow: inset 0 0 0 1px var(--signal);
   color: var(--ink);
 }
 
 .action.outline:hover {
-  border-color: var(--ink);
+  background: var(--signal);
+  color: var(--signal-ink);
 }
 
 @media (prefers-reduced-motion: reduce) {
