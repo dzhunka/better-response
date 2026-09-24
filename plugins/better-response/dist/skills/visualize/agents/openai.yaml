@@ -1,5 +1,5 @@
 interface:
-  display_name: "Visualize"
+  display_name: "Better Response: Visualize"
   short_description: "Turn a reply into an interface you can use"
   icon_small: "./assets/better-response.svg"
   icon_large: "./assets/better-response.svg"
