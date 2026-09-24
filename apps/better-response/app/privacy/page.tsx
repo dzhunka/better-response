@@ -75,7 +75,7 @@ export default function Privacy() {
         <p>
           Material changes to this policy will be published on this page with a
           new date. Questions go to{" "}
-          <a href="https://github.com/dzhunka/better-response/issues">
+          <a href="https://github.com/Enkind/better-response/issues">
             the public issue tracker
           </a>
           .

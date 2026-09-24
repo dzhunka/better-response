@@ -19,8 +19,8 @@ export default function Support() {
           tracker:
         </p>
         <p>
-          <a href="https://github.com/dzhunka/better-response/issues">
-            github.com/dzhunka/better-response/issues
+          <a href="https://github.com/Enkind/better-response/issues">
+            github.com/Enkind/better-response/issues
           </a>
         </p>
         <p>
