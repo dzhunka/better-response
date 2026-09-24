@@ -1,11 +1,10 @@
 import { ChatWindow } from "./chat-window";
-import { CopyAddress } from "./copy-address";
+import { CopyButton } from "./copy-button";
 import { Mark } from "./mark";
 import "./styles.css";
 
-const MCP_URL = "https://betterresponse.vercel.app/api/mcp";
-const CURSOR_DEEPLINK =
-  "cursor://anysphere.cursor-deeplink/mcp/install?name=visualize&config=eyJ0eXBlIjoiaHR0cCIsInVybCI6Imh0dHBzOi8vYmV0dGVycmVzcG9uc2UudmVyY2VsLmFwcC9hcGkvbWNwIn0=";
+const INSTALL_PROMPT =
+  "Install the Better Response plugin from https://github.com/dzhunka/better-response";
 
 export default function Home() {
   return (
@@ -38,7 +37,7 @@ export default function Home() {
             <a className="action" href="#install">
               Add to your agent
             </a>
-            <CopyAddress value={MCP_URL} label="Copy the address" />
+            <CopyButton value={INSTALL_PROMPT} label="Copy the install prompt" />
           </div>
 
           <ChatWindow />
@@ -162,84 +161,35 @@ export default function Home() {
       <section className="band" id="install">
         <div className="inner">
           <h2>Add it to your agent.</h2>
-          <p className="lede">
-            Better Response is one address. Point your agent at it and the
-            capability shows up in your next conversation. There is no account
-            and no key.
-          </p>
+          <p className="lede">No account and no key.</p>
 
-          <p className="address">
-            <code className="mono">{MCP_URL}</code>
-            <CopyAddress value={MCP_URL} label="Copy" />
-          </p>
-
-          <div className="hosts">
+          <div className="ways">
             <article>
               <div className="head">
-                <h3>Cursor</h3>
+                <h3>Ask your agent to install it</h3>
                 <span className="pill">
                   <span className="dot" />
-                  Verified
+                  Available now
                 </span>
               </div>
-              <a className="action" href={CURSOR_DEEPLINK}>
-                Add to Cursor
-              </a>
-              <p>
-                Or open Settings → MCP → New MCP Server and add the address above
-                as an <code className="mono">http</code> server.
+              <p>Paste this into Codex or Cursor, then start a new chat.</p>
+              <p className="address">
+                <code className="mono">{INSTALL_PROMPT}</code>
+                <CopyButton value={INSTALL_PROMPT} label="Copy" />
               </p>
             </article>
 
             <article>
               <div className="head">
-                <h3>Codex</h3>
-                <span className="pill">
-                  <span className="dot" />
-                  Verified
-                </span>
-              </div>
-              <code className="block mono">
-                codex mcp add visualize --url {MCP_URL}
-              </code>
-              <p>
-                The entry lands in <code className="mono">~/.codex/config.toml</code>.
-                Run <code className="mono">/mcp</code> in the Codex TUI to confirm
-                it loaded.
-              </p>
-            </article>
-
-            <article>
-              <div className="head">
-                <h3>Claude</h3>
-                <span className="pill">Not tested yet</span>
+                <h3>From your agent’s marketplace</h3>
+                <span className="pill">Coming soon</span>
               </div>
               <p>
-                Go to Customize → Connectors, choose Add custom connector, and
-                paste the address. On Team and Enterprise plans an owner adds it
-                under Organization settings → Connectors.
-              </p>
-            </article>
-
-            <article>
-              <div className="head">
-                <h3>ChatGPT</h3>
-                <span className="pill">Not tested yet</span>
-              </div>
-              <p>
-                Turn on Developer mode in Settings, then open{" "}
-                <a href="https://chatgpt.com/plugins">chatgpt.com/plugins</a> and
-                create an app from the address. Developer mode is web-only.
+                Install it in one click from the plugin marketplace inside your
+                agent.
               </p>
             </article>
           </div>
-
-          <p className="note">
-            Better Response draws its interface through MCP Apps. Cursor and Codex
-            are the two hosts it has been verified in; Claude and ChatGPT accept
-            the address but have not been tested, and a directory listing for each
-            is still under review.
-          </p>
         </div>
       </section>
 

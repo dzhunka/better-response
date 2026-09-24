@@ -786,12 +786,33 @@ h3 {
 
 /* Install */
 
+.ways {
+  display: grid;
+  gap: 40px;
+  margin-top: clamp(40px, 5vw, 56px);
+  grid-template-columns: 1fr;
+}
+
+.ways .head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.ways .head + p {
+  max-width: 44ch;
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
 .address {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 14px;
-  margin: 32px 0 0;
+  margin: 18px 0 0;
 }
 
 .address code {
@@ -799,50 +820,8 @@ h3 {
   border: 1px solid var(--hairline);
   background: var(--surface);
   font-size: 0.875rem;
-  word-break: break-all;
-}
-
-.hosts {
-  display: grid;
-  gap: 40px;
-  margin-top: clamp(44px, 5vw, 64px);
-  grid-template-columns: 1fr;
-}
-
-.hosts .head {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.hosts p {
-  max-width: 44ch;
-  margin: 14px 0 0;
-  color: var(--muted);
-  font-size: 0.9375rem;
-}
-
-.hosts .action {
-  margin-top: 18px;
-}
-
-code.block {
-  display: block;
-  margin-top: 16px;
-  padding: 12px 14px;
-  border: 1px solid var(--hairline);
-  background: var(--surface);
-  font-size: 0.8125rem;
-  line-height: 1.6;
-  white-space: pre-wrap;
-  word-break: break-all;
-}
-
-.note {
-  max-width: 64ch;
-  margin: clamp(44px, 5vw, 64px) 0 0;
-  color: var(--muted);
-  font-size: 0.875rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 /* Footer */
@@ -879,11 +858,8 @@ footer .inner {
     gap: 32px;
   }
 
-  .hosts {
+  .ways {
     grid-template-columns: 1fr 1fr;
-  }
-
-  .hosts {
     gap: 48px 64px;
   }
 }
