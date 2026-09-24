@@ -90,7 +90,7 @@ export default function Home() {
             <li>
               <div className="chat tile" aria-hidden="true">
                 <span className="prior">
-                  Here’s how the three builds compare: | Build | Price | kg | Worth it |
+                  For pasta night you need 400 g spaghetti, 200 g guanciale, 4 eggs and pecorino.
                 </span>
                 <div className="menu">
                   <span className="on">
