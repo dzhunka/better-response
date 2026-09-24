@@ -37,7 +37,6 @@ export default function Home() {
             <a className="action" href="#install">
               Add to your agent
             </a>
-            <CopyButton value={INSTALL_PROMPT} label="Copy the install prompt" />
           </div>
 
           <ChatWindow />

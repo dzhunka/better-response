@@ -48,6 +48,12 @@ body {
   margin: 0;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 a {
   color: inherit;
   text-underline-offset: 0.2em;
