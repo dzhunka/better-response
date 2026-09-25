@@ -11,6 +11,9 @@ importers:
       '@types/node':
         specifier: ^22.10.2
         version: 22.20.1
+      agent-playground:
+        specifier: git+https://github.com/enkind/agent-playground.git
+        version: git+https://git@github.com:enkind/agent-playground.git#cab6c2621c5f2e421adb77494f26daeb8f581d40
       typescript:
         specifier: ^5.7.2
         version: 5.9.3
@@ -1494,6 +1497,12 @@ packages:
   acorn@8.18.0:
     resolution: {integrity: sha512-lGq+9yr1/GuAWaVYIHRjvvySG5/4VfKIvC8EWxStPdcDh/Ka7FG3twP6v4d5BkravUilhIAsG4Qj83t02LWUPQ==}
     engines: {node: '>=0.4.0'}
+    hasBin: true
+
+  agent-playground@git+https://git@github.com:enkind/agent-playground.git#cab6c2621c5f2e421adb77494f26daeb8f581d40:
+    resolution: {commit: cab6c2621c5f2e421adb77494f26daeb8f581d40, repo: git@github.com:enkind/agent-playground.git, type: git}
+    version: 0.1.0
+    engines: {node: '>=20.12'}
     hasBin: true
 
   ajv-formats@2.1.1:
@@ -4485,6 +4494,8 @@ snapshots:
       negotiator: 1.0.0
 
   acorn@8.18.0: {}
+
+  agent-playground@git+https://git@github.com:enkind/agent-playground.git#cab6c2621c5f2e421adb77494f26daeb8f581d40: {}
 
   ajv-formats@2.1.1(ajv@8.20.0):
     optionalDependencies:
