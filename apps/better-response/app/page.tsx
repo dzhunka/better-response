@@ -4,7 +4,7 @@ import { Mark } from "./mark";
 import "./styles.css";
 
 const INSTALL_PROMPT =
-  "Install the Better Response plugin from https://github.com/Enkind/better-response";
+  "Install the Better Response plugin from https://github.com/enkind/better-response";
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
           </a>
           <span className="pill">Early preview</span>
           <span className="spacer" />
-          <a href="https://github.com/Enkind/better-response">GitHub</a>
+          <a href="https://github.com/enkind/better-response">GitHub</a>
           <a className="action" href="#install">
             Add to your agent
           </a>
@@ -195,7 +195,7 @@ export default function Home() {
       <footer>
         <div className="inner">
           <p className="site-links">
-            <a href="https://github.com/Enkind/better-response">GitHub</a>
+            <a href="https://github.com/enkind/better-response">GitHub</a>
             <a href="/privacy">Privacy</a>
             <a href="/terms">Terms</a>
             <a href="/support">Support</a>

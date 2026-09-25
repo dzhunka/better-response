@@ -70,7 +70,7 @@ export default function Terms() {
         <p>
           Updated terms will be published on this page with a new date.
           Questions go to{" "}
-          <a href="https://github.com/Enkind/better-response/issues">
+          <a href="https://github.com/enkind/better-response/issues">
             the public issue tracker
           </a>
           .

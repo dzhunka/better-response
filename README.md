@@ -2,7 +2,7 @@
 
 Better Response is a small, free agent plugin that improves the agent's reply when plain text is hard to use. Its UI engine is Engawa: the agent authors a validated tree, and Engawa renders it as an MCP App without another LLM call.
 
-[Website](https://betterresponse.vercel.app) · [Privacy](https://betterresponse.vercel.app/privacy) · [Terms](https://betterresponse.vercel.app/terms) · [Issues](https://github.com/Enkind/better-response/issues)
+[Website](https://betterresponse.vercel.app) · [Privacy](https://betterresponse.vercel.app/privacy) · [Terms](https://betterresponse.vercel.app/terms) · [Issues](https://github.com/enkind/better-response/issues)
 
 Questions and bug reports go to the issue tracker; support is best-effort on a noncommercial project. MIT licensed.
 
