@@ -1,0 +1,92 @@
+{
+  "$schema": "https://developers.openai.com/apps-sdk/schemas/chatgpt-app-submission.v1.json",
+  "schema_version": 1,
+  "app_info": {
+    "display_name": "Better Response",
+    "subtitle": "Turn replies into usable views",
+    "description": "Better Response turns information in an agent's current reply into an interactive view in ChatGPT. It can show checklists, comparisons, and structured details drawn from the conversation. Interactions stay in the view and are not sent back to the agent.",
+    "category": "PRODUCTIVITY"
+  },
+  "tools": {
+    "visualize": {
+      "annotations": {
+        "readOnlyHint": true,
+        "openWorldHint": false,
+        "destructiveHint": false
+      },
+      "justifications": {
+        "read_only_justification": "Echoes the supplied interface tree for rendering without storing it or changing any records.",
+        "open_world_justification": "Only processes the supplied tree and does not contact external entities or public sites.",
+        "destructive_justification": "Does not delete, overwrite, send messages, or perform irreversible actions."
+      }
+    }
+  },
+  "test_cases": [
+    {
+      "description": "Turn a short ingredient list into a local checklist.",
+      "user_prompt": "Visualize a shopping checklist for 400 g spaghetti, 2 eggs, 100 g pecorino, and black pepper.",
+      "file_attachment_urls": null,
+      "tools_triggered": "visualize",
+      "expected_output": "Shows all four ingredients with checkboxes that can be toggled in the view.",
+      "expected_output_url": null
+    },
+    {
+      "description": "Compare several options with different kinds of values.",
+      "user_prompt": "Make this easier to compare: Train costs €24, takes 45 minutes, and has Wi-Fi; bus costs €12, takes 75 minutes, and has no Wi-Fi; taxi costs €58, takes 30 minutes, and has Wi-Fi.",
+      "file_attachment_urls": null,
+      "tools_triggered": "visualize",
+      "expected_output": "Presents the three options and their stated attributes in a readable comparison view without adding facts.",
+      "expected_output_url": null
+    },
+    {
+      "description": "Present ordered instructions as a usable view.",
+      "user_prompt": "Visualize these instructions: preheat the oven to 180°C; mix the dry ingredients; add the wet ingredients; bake for 25 minutes; cool before serving.",
+      "file_attachment_urls": null,
+      "tools_triggered": "visualize",
+      "expected_output": "Shows all five steps in their original order with the given temperature and time.",
+      "expected_output_url": null
+    },
+    {
+      "description": "Preserve missing values in a structured comparison.",
+      "user_prompt": "Show these project estimates in a view: Alpha, €1,200, due 2026-10-01; Beta, cost unknown, due 2026-10-15; Gamma, €950, due 2026-11-02.",
+      "file_attachment_urls": null,
+      "tools_triggered": "visualize",
+      "expected_output": "Shows each project with its stated cost and date while leaving Beta's cost unknown.",
+      "expected_output_url": null
+    },
+    {
+      "description": "Show a compact summary with a rating and supporting details.",
+      "user_prompt": "Visualize this review summary: the venue is rated 4.5 out of 5, has step-free access, and closes at 10 pm.",
+      "file_attachment_urls": null,
+      "tools_triggered": "visualize",
+      "expected_output": "Displays the rating and both details in a compact view without inventing more review information.",
+      "expected_output_url": null
+    }
+  ],
+  "negative_test_cases": [
+    {
+      "description": "A one-line fact does not benefit from a view.",
+      "user_prompt": "What is 2 + 2?",
+      "file_attachment_urls": null,
+      "tools_triggered": null,
+      "expected_output": "Answers directly without invoking the app.",
+      "expected_output_url": null
+    },
+    {
+      "description": "A choice that must return to the agent is outside the local interaction model.",
+      "user_prompt": "Ask me which of these plans I choose, then book that plan for me based on my selection.",
+      "file_attachment_urls": null,
+      "tools_triggered": null,
+      "expected_output": "Does not use the app to collect a selection because view interactions are not sent back to the agent.",
+      "expected_output_url": null
+    },
+    {
+      "description": "Building and publishing a standalone app is outside this tool's workflow.",
+      "user_prompt": "Build and deploy a website for my bakery.",
+      "file_attachment_urls": null,
+      "tools_triggered": null,
+      "expected_output": "Does not invoke Better Response to create or deploy a website.",
+      "expected_output_url": null
+    }
+  ]
+}

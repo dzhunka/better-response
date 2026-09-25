@@ -1,7 +1,6 @@
 import {
   advertiseTreeJsonSchema,
   createTree,
-  formatTree,
   type Tree,
 } from "@better-response/engawa";
 import {
@@ -10,9 +9,6 @@ import {
   RESOURCE_URI_META_KEY,
 } from "@modelcontextprotocol/ext-apps/server";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import fs from "node:fs/promises";
-import { existsSync } from "node:fs";
-import path from "node:path";
 import { z } from "zod";
 import componentMetadata from "./components/index.ts?meta";
 import { version } from "../package.json";
@@ -66,8 +62,6 @@ const componentContract = Object.entries(componentMetadata)
     ].join("\n");
   })
   .join("\n");
-const logsDir = resolveLogsDir();
-
 advertiseTreeAsToolObject(tree);
 
 export function createBetterResponseServer(
@@ -111,7 +105,6 @@ export function createBetterResponseServer(
       },
     },
     async (schema: Tree) => {
-      await logVisualize(schema);
       return {
         content: [
           {
@@ -149,41 +142,6 @@ export function createBetterResponseServer(
   );
 
   return server;
-}
-
-async function logVisualize(schema: Tree): Promise<void> {
-  // readOnlyHint requires the hosted server to leave no trace of a payload.
-  if (process.env.NODE_ENV === "production") return;
-
-  try {
-    await fs.mkdir(logsDir, { recursive: true });
-    await fs.appendFile(
-      path.join(logsDir, "visualize.jsonl"),
-      `${JSON.stringify({
-        at: new Date().toISOString(),
-        outline: formatTree(schema),
-        tree: schema,
-      })}\n`,
-    );
-  } catch {
-    // Local debug aid only; never fail the tool.
-  }
-}
-
-function resolveLogsDir(): string {
-  let dir = process.cwd();
-
-  for (let i = 0; i < 5; i += 1) {
-    if (existsSync(path.join(dir, "pnpm-workspace.yaml"))) {
-      return path.join(dir, ".logs");
-    }
-
-    const parent = path.dirname(dir);
-    if (parent === dir) break;
-    dir = parent;
-  }
-
-  return path.join(process.cwd(), ".logs");
 }
 
 function advertiseTreeAsToolObject(schema: typeof tree) {
