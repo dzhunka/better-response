@@ -4,7 +4,7 @@
   "app_info": {
     "display_name": "Better Response",
     "subtitle": "Turn replies into usable views",
-    "description": "Better Response turns information in an agent's current reply into an interactive view in ChatGPT. It can show checklists, comparisons, and structured details drawn from the conversation. Interactions stay in the view and are not sent back to the agent.",
+    "description": "Some answers shouldn’t arrive as a wall of text. Better Response helps ChatGPT turn the details already in your conversation into a view you can use. Tick through a checklist, compare options side by side, or follow a set of steps—all without leaving the chat.",
     "category": "PRODUCTIVITY"
   },
   "tools": {
