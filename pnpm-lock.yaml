@@ -8,12 +8,12 @@ importers:
 
   .:
     devDependencies:
+      '@enkind/agent-playground':
+        specifier: ^0.1.0
+        version: 0.1.0
       '@types/node':
         specifier: ^22.10.2
         version: 22.20.1
-      agent-playground:
-        specifier: git+https://github.com/enkind/agent-playground.git
-        version: git+https://git@github.com:enkind/agent-playground.git#cab6c2621c5f2e421adb77494f26daeb8f581d40
       typescript:
         specifier: ^5.7.2
         version: 5.9.3
@@ -400,6 +400,11 @@ packages:
 
   '@emnapi/runtime@1.11.3':
     resolution: {integrity: sha512-Xz4Tpyki7XyrpbUK1jR1AhdAdaXyhhY4lZ3neLodmhpuWfy2PAQN5B46sAiU4liOXGLkHypn/qU+jvfWSCYYLA==}
+
+  '@enkind/agent-playground@0.1.0':
+    resolution: {integrity: sha512-KPQPPvK3Xu4EQrddM1DC9rqcObjQFp8TqVHgD8BT6MYyTNuWJ3/8InPRqrwEJrhWhmWkmarm270UO21ZnMZ03A==}
+    engines: {node: '>=20.12'}
+    hasBin: true
 
   '@esbuild/aix-ppc64@0.25.12':
     resolution: {integrity: sha512-Hhmwd6CInZ3dwpuGTF8fJG6yoWmsToE+vYgD4nytZVxcu1ulHpUQRAB1UJ8+N1Am3Mz4+xOByoQoSZf4D+CpkA==}
@@ -1497,12 +1502,6 @@ packages:
   acorn@8.18.0:
     resolution: {integrity: sha512-lGq+9yr1/GuAWaVYIHRjvvySG5/4VfKIvC8EWxStPdcDh/Ka7FG3twP6v4d5BkravUilhIAsG4Qj83t02LWUPQ==}
     engines: {node: '>=0.4.0'}
-    hasBin: true
-
-  agent-playground@git+https://git@github.com:enkind/agent-playground.git#cab6c2621c5f2e421adb77494f26daeb8f581d40:
-    resolution: {commit: cab6c2621c5f2e421adb77494f26daeb8f581d40, repo: git@github.com:enkind/agent-playground.git, type: git}
-    version: 0.1.0
-    engines: {node: '>=20.12'}
     hasBin: true
 
   ajv-formats@2.1.1:
@@ -3596,6 +3595,8 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
+  '@enkind/agent-playground@0.1.0': {}
+
   '@esbuild/aix-ppc64@0.25.12':
     optional: true
 
@@ -4494,8 +4495,6 @@ snapshots:
       negotiator: 1.0.0
 
   acorn@8.18.0: {}
-
-  agent-playground@git+https://git@github.com:enkind/agent-playground.git#cab6c2621c5f2e421adb77494f26daeb8f581d40: {}
 
   ajv-formats@2.1.1(ajv@8.20.0):
     optionalDependencies:

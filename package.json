@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
-    "agent-playground": "git+https://github.com/enkind/agent-playground.git",
+    "@enkind/agent-playground": "^0.1.0",
     "typescript": "^5.7.2"
   }
 }
